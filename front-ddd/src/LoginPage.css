@@ -1,0 +1,94 @@
+/* Estilização geral da página de login */
+.login-page {
+    display: flex;
+    min-height: 100vh;
+    background-color: #f3f4f6;
+  }
+  
+  /* Sidebar */
+  .login-sidebar {
+    width: 15%;
+    background-color: #c2a8ff;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .login-sidebar button {
+    background: none;
+    border: none;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    color: black;
+  }
+  
+  .login-sidebar button span {
+    margin-right: 8px;
+    font-size: 22px;
+  }
+  
+  .login-sidebar .contact-info {
+    font-size: 14px;
+    color: black;
+    margin-top: 20px;
+  }
+  
+  /* Conteúdo principal */
+  .login-main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Caixa do formulário */
+  .login-box {
+    background-color: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    width: 350px;
+    text-align: center;
+  }
+  
+  /* Labels */
+  .login-box label {
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 6px;
+    text-align: left;
+  }
+  
+  /* Inputs */
+  .login-box input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+  }
+  
+  /* Botão de login */
+  .login-box button {
+    width: 100%;
+    background-color: #b399ff;
+    color: black;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .login-box button:hover {
+    background-color: #9f85ff;
+  }
+  
