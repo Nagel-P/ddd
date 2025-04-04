@@ -7,13 +7,15 @@
   
   /* Sidebar */
   .login-sidebar {
-    width: 15%;
-    background-color: #c2a8ff;
-    padding: 15px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
+    width: 18%;
+  min-width: 200px; /* Evita que a sidebar fique muito pequena */
+  max-width: 250px; /* Evita que fique grande demais */
+  background-color: #c2a8ff;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
   
   .login-sidebar button {
     background: none;
@@ -31,9 +33,8 @@
   }
   
   .login-sidebar .contact-info {
-    font-size: 14px;
-    color: black;
-    margin-top: 20px;
+    font-size: 0.9rem;
+  margin-top: 20px;
   }
   
   /* Conteúdo principal */

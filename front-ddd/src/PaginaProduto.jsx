@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import LoginPage from "./LoginPage";
+import pdfimg from './pdf.png'
 import "./PaginaProduto.css";
 
 const PaginaProduto = () => {
@@ -28,15 +29,27 @@ const PaginaProduto = () => {
       </aside>
 
       <main className="main-content">
-        <div className="product-info">
+        <div className="product-descricao"> 
           <h1>Informação do produto</h1>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, Lorem ipsum dolor sit amet, 
-            consectetur adipiscing elit, Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-            V, Lorem ipsum dolor sit amet, consectetur adipiscing elit, Lorem ipsum dolor sit amet, c
-            onsectetur adipiscing elit, Lorem ipsum dolor sit amet, consectetur adipiscing elit, Lorem ipsum 
-            dolor sit amet, consectetur adipiscing elit, Lorem ipsum dolor sit amet, consectetur adipiscing
-             elit, Lorem ipsum dolor sit amet, consectetur adipiscing elit,Lorem ipsum dolor sit amet, 
-             consectetur adipiscing elit.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+            Aperiam, aliquam ipsa ad, quidem distinctio laborum eligendi 
+            impedit illum odit veniam dolor velit, molestias cum. 
+            Est aliquid amet maxime ipsa ex. Lorem ipsum dolor sit amet
+            consectetur adipisicing elit. Eligendi, voluptate ratione 
+            sequi dolores natus soluta ipsum labore accusantium voluptatum. 
+            Nemo, ad excepturi quis corporis ea delectus ipsam voluptate 
+            placeat dignissimos laceat dignissimos.
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+            Aperiam, aliquam ipsa ad, quidem distinctio laborum eligendi 
+            impedit illum odit veniam dolor velit, molestias cum. 
+            Est aliquid amet maxime ipsa ex. Lorem ipsum dolor sit amet
+            consectetur adipisicing elit. Eligendi, voluptate ratione 
+            sequi dolores natus soluta ipsum labore accusantium voluptatum. 
+            Nemo, ad excepturi quis corporis ea delectus ipsam voluptate </p>
+        </div>
+        <div className="product-info">
+          <h1>Nome do produto</h1>
+          <img className="capa" src={pdfimg}/>
           <button className="button">Comprar</button>
         </div>
       </main>

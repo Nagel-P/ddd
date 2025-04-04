@@ -1,93 +1,169 @@
 /* Estilização geral */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f3f4f6;
-    margin: 0;
-    padding: 0;
-  }
-  
-  /* Layout principal */
-  .container {
-    display: flex;
-    min-height: 100vh;
-  }
-  
-  /* Sidebar */
+  font-family: Arial, sans-serif;
+  background-color: #f3f4f6;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Evita rolagem horizontal */
+}
+
+/* Layout principal */
+.container {
+  display: flex;
+  height: 100vh; /* Ocupa toda a altura da tela */
+  width: 100vw;  /* Ocupa toda a largura da tela */
+}
+
+/* Sidebar */
+.sidebar {
+  width: 18%;
+  min-width: 200px; /* Evita que a sidebar fique muito pequena */
+  max-width: 250px; /* Evita que fique grande demais */
+  background-color: #c2a8ff;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar li {
+  display: flex;
+  align-items: center;
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+  cursor: pointer;
+}
+
+.sidebar li span {
+  margin-right: 10px;
+}
+
+.sidebar .contact-info {
+  font-size: 0.9rem;
+  margin-top: 20px;
+}
+
+/* Conteúdo principal */
+.main-content {
+  flex: 1;
+  display: flex;
+  align-items: center; /* Centraliza verticalmente */
+  justify-content: center; /* Centraliza horizontalmente */
+  padding: 20px;
+  width: calc(100vw - 250px); /* Garante que o conteúdo principal use o espaço certo */
+  overflow-y: auto;
+}
+
+/* Descrição do produto */
+.product-descricao {
+  text-align: justify;
+  margin: 0 auto; /* Centraliza horizontalmente */
+  padding: 20px;
+  max-width: 600px;
+  width: 90%; /* Mantém o tamanho adequado mesmo em telas pequenas */
+}
+
+/* Informações do produto */
+.product-info {
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 90%;
+  width: min(500px, 90vw); /* Adapta-se melhor às telas menores */
+}
+
+/* Título */
+.product-info h1 {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* Imagem do produto */
+.capa {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+/* Botão */
+.button {
+  margin-top: 15px;
+  background-color: #b399ff;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+  width: 80%;
+  max-width: 200px;
+}
+
+.button:hover {
+  background-color: #9f85ff;
+}
+
+/* Responsividade */
+@media (max-width: 1024px) {
   .sidebar {
-    width: 15%;
-    background-color: #c2a8ff;
-    padding: 15px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+      width: 20%;
+      max-width: 200px;
   }
   
-  .sidebar ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .sidebar li {
-    display: flex;
-    align-items: center;
-    font-size: 18px;
-    margin-bottom: 15px;
-    cursor: pointer;
-  }
-  
-  .sidebar li span {
-    margin-right: 10px;
-  }
-  
-  .sidebar .contact-info {
-    font-size: 14px;
-    margin-top: 20px;
-  }
-  
-  /* Conteúdo principal */
   .main-content {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
+      width: calc(100vw - 200px);
   }
-  
+
   .product-info {
-    background-color: white;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    max-width: 600px;
+      width: 95%;
   }
-  
-  .product-info h1 {
-    font-size: 24px;
-    font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .container {
+      flex-direction: column;
+      height: auto;
   }
-  
-  .product-info p {
-    font-size: 16px;
-    color: #4a4a4a;
-    margin-top: 15px;
+
+  .sidebar {
+      width: 100%;
+      padding: 10px;
+      text-align: center;
   }
-  
-  /* Botão */
+
+  .main-content {
+      width: 100%;
+      padding: 15px;
+  }
+
+  .product-info {
+      width: 90%;
+  }
+
+  .product-descricao {
+      width: 90%;
+  }
+
   .button {
-    margin-top: 20px;
-    background-color: #b399ff;
-    color: white;
-    border: none;
-    padding: 12px 20px;
-    font-size: 16px;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background 0.3s;
+      width: 100%;
   }
-  
-  .button:hover {
-    background-color: #9f85ff;
-  }
-  
+}
