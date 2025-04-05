@@ -1,4 +1,3 @@
-/* Estilização geral */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -10,21 +9,19 @@ body {
   background-color: #f3f4f6;
   margin: 0;
   padding: 0;
-  overflow-x: hidden; /* Evita rolagem horizontal */
+  overflow-x: hidden; 
 }
 
-/* Layout principal */
 .container {
   display: flex;
-  height: 100vh; /* Ocupa toda a altura da tela */
-  width: 100vw;  /* Ocupa toda a largura da tela */
+  height: 100vh; 
+  width: 100vw; 
 }
 
-/* Sidebar */
 .sidebar {
   width: 18%;
-  min-width: 200px; /* Evita que a sidebar fique muito pequena */
-  max-width: 250px; /* Evita que fique grande demais */
+  min-width: 200px; 
+  max-width: 250px;
   background-color: #c2a8ff;
   padding: 15px;
   display: flex;
@@ -55,27 +52,25 @@ body {
   margin-top: 20px;
 }
 
-/* Conteúdo principal */
 .main-content {
   flex: 1;
   display: flex;
-  align-items: center; /* Centraliza verticalmente */
-  justify-content: center; /* Centraliza horizontalmente */
+  align-items: center; 
+  justify-content: center; 
   padding: 20px;
-  width: calc(100vw - 250px); /* Garante que o conteúdo principal use o espaço certo */
+  width: calc(100vw - 250px);
   overflow-y: auto;
 }
 
-/* Descrição do produto */
+
 .product-descricao {
   text-align: justify;
-  margin: 0 auto; /* Centraliza horizontalmente */
+  margin: 0 auto; 
   padding: 20px;
   max-width: 600px;
-  width: 90%; /* Mantém o tamanho adequado mesmo em telas pequenas */
+  width: 90%; 
 }
 
-/* Informações do produto */
 .product-info {
   background-color: white;
   padding: 30px;
@@ -86,16 +81,13 @@ body {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
   max-width: 90%;
-  width: min(500px, 90vw); /* Adapta-se melhor às telas menores */
+  width: min(500px, 90vw); 
 }
-
-/* Título */
 .product-info h1 {
   font-size: 1.5rem;
   font-weight: bold;
 }
 
-/* Imagem do produto */
 .capa {
   width: 100%;
   max-width: 300px;
@@ -103,7 +95,6 @@ body {
   margin-bottom: 10px;
 }
 
-/* Botão */
 .button {
   margin-top: 15px;
   background-color: #b399ff;
