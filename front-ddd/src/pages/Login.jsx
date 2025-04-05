@@ -1,10 +1,9 @@
 import React from "react";
-import "../style/LoginPage.css";
+import "../style/Login.css";
 
 const LoginPage = ({ voltar }) => {
   return (
     <div className="login-page">
-      {/* Sidebar */}
       <aside className="login-sidebar">
         <button onClick={voltar}>
           <span>↩</span> Voltar
@@ -16,7 +15,6 @@ const LoginPage = ({ voltar }) => {
         </div>
       </aside>
 
-      {/* Conteúdo principal */}
       <main className="login-main">
         <div className="login-box">
           <form>

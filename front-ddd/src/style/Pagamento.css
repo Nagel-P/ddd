@@ -1,0 +1,145 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f3f4f6;
+    overflow-x: hidden;
+  }
+  
+  .container {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+  }
+  
+  .sidebar {
+    width: 18%;
+    min-width: 200px;
+    max-width: 250px;
+    background-color: #c2a8ff;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .sidebar li {
+    display: flex;
+    align-items: center;
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    cursor: pointer;
+  }
+  
+  .sidebar li span {
+    margin-right: 10px;
+  }
+  
+  .sidebar .contact-info {
+    font-size: 0.9rem;
+    margin-top: 20px;
+  }
+  
+  .main-content {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    width: calc(100vw - 250px);
+    overflow-y: auto;
+  }
+  
+  .payment-card {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .payment-card h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+  
+  .payment-card p {
+    margin-bottom: 25px;
+    font-size: 1rem;
+    color: #444;
+  }
+  
+  .payment-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .button {
+    background-color: #b399ff;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  .button:hover {
+    background-color: #9f85ff;
+  }
+  
+  .cancel-button {
+    background-color: #ccc;
+    color: #333;
+  }
+  
+  .cancel-button:hover {
+    background-color: #aaa;
+  }
+  
+  .loading-message {
+    font-size: 1rem;
+    color: #6c6c6c;
+    margin-top: 20px;
+  }
+  
+  @media (max-width: 768px) {
+    .container {
+      flex-direction: column;
+      height: auto;
+    }
+  
+    .sidebar {
+      width: 100%;
+      max-width: none;
+      text-align: center;
+    }
+  
+    .main-content {
+      width: 100%;
+      padding: 15px;
+    }
+  
+    .payment-card {
+      width: 90%;
+    }
+  
+    .button {
+      width: 100%;
+    }
+  }
+  
