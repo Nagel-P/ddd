@@ -1,5 +1,5 @@
 import React from "react";
-import "./LoginPage.css";
+import "../style/LoginPage.css";
 
 const LoginPage = ({ voltar }) => {
   return (

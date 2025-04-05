@@ -1,6 +1,6 @@
 import React from "react";
-import PaginaProduto from "./PaginaProduto";
-import "./PaginaProduto.css"; // Mantém os estilos do App, se quiser
+import PaginaProduto from "./pages/PaginaProduto";
+import "./style/PaginaProduto.css"; // Mantém os estilos do App, se quiser
 
 function App() {
   return <PaginaProduto />;

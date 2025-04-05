@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import LoginPage from "./LoginPage";
-import pdfimg from './pdf.png'
-import "./PaginaProduto.css";
+import pdfimg from '../externals/pdf.png'
+import "../style/PaginaProduto.css";
 
 const PaginaProduto = () => {
   const [paginaAtual, setPaginaAtual] = useState("produto");
