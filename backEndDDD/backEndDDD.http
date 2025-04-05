@@ -1,0 +1,6 @@
+@backEndDDD_HostAddress = http://localhost:5207
+
+GET {{backEndDDD_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
