@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\college-projects-sw\\ddd\\backEndDDD\\backEndDDD.csproj": {}
+    "D:\\bkp\\Documents\\Geral\\PROGRAMACAO\\DDD\\ddd\\ddd\\backEndDDD\\backEndDDD.csproj": {}
   },
   "projects": {
-    "C:\\college-projects-sw\\ddd\\backEndDDD\\backEndDDD.csproj": {
+    "D:\\bkp\\Documents\\Geral\\PROGRAMACAO\\DDD\\ddd\\ddd\\backEndDDD\\backEndDDD.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\college-projects-sw\\ddd\\backEndDDD\\backEndDDD.csproj",
+        "projectUniqueName": "D:\\bkp\\Documents\\Geral\\PROGRAMACAO\\DDD\\ddd\\ddd\\backEndDDD\\backEndDDD.csproj",
         "projectName": "backEndDDD",
-        "projectPath": "C:\\college-projects-sw\\ddd\\backEndDDD\\backEndDDD.csproj",
-        "packagesPath": "C:\\Users\\Igor\\.nuget\\packages\\",
-        "outputPath": "C:\\college-projects-sw\\ddd\\backEndDDD\\obj\\",
+        "projectPath": "D:\\bkp\\Documents\\Geral\\PROGRAMACAO\\DDD\\ddd\\ddd\\backEndDDD\\backEndDDD.csproj",
+        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+        "outputPath": "D:\\bkp\\Documents\\Geral\\PROGRAMACAO\\DDD\\ddd\\ddd\\backEndDDD\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Igor\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -45,17 +45,23 @@
           "dependencies": {
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[7.0.7, )"
+              "version": "[8.0.13, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.13, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[7.0.7, )"
+              "version": "[8.0.13, )"
             },
             "Pomelo.EntityFrameworkCore.MySql": {
               "target": "Package",
-              "version": "[7.0.0, )"
+              "version": "[8.0.3, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
@@ -81,7 +87,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
