@@ -1,14 +1,17 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../style/Login.css";
 
-const LoginPage = ({ voltar }) => {
+const LoginPage = () => {
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState("");
   const [nome, setNome] = useState("");
   const [senha, setSenha] = useState("");
   const [confirmarSenha, setConfirmarSenha] = useState("");
-  const [cpf, setCpf] = useState(""); // NOVO
-  const [telefone, setTelefone] = useState(""); // NOVO
+  const [cpf, setCpf] = useState("");
+  const [telefone, setTelefone] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -30,6 +33,7 @@ const LoginPage = ({ voltar }) => {
       const response = await axios.post("http://localhost:5207/api/users", usuario);
       console.log("Resposta da API:", response.data);
       alert("Usuário armazenado com sucesso!");
+      navigate("/"); // Redireciona para o catálogo após cadastro
     } catch (err) {
       console.error("Erro ao conectar com API:", err.response?.data || err.message);
       alert("Erro ao armazenar usuário!");
@@ -39,7 +43,7 @@ const LoginPage = ({ voltar }) => {
   return (
     <div className="login-page">
       <aside className="login-sidebar">
-        <button onClick={voltar}>
+        <button onClick={() => navigate("/")}>
           <span>↩</span> Voltar
         </button>
         <div className="contact-info">
@@ -58,10 +62,10 @@ const LoginPage = ({ voltar }) => {
             <label>Nome</label>
             <input type="text" value={nome} onChange={e => setNome(e.target.value)} required />
 
-            <label>CPF</label> {/* NOVO */}
+            <label>CPF</label>
             <input type="text" value={cpf} onChange={e => setCpf(e.target.value)} required />
 
-            <label>Telefone</label> {/* NOVO */}
+            <label>Telefone</label>
             <input type="text" value={telefone} onChange={e => setTelefone(e.target.value)} required />
 
             <label>Senha</label>
