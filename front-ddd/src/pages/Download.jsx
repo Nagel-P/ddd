@@ -1,25 +1,17 @@
-import React, { useState } from "react";
-import Login from "./Login";
-import "../style/Download.css";
+import { useNavigate } from "react-router-dom";
 
 const Download = () => {
-  const [paginaAtual, setPaginaAtual] = useState("download");
-
-  if (paginaAtual === "login") {
-    return <Login voltar={() => setPaginaAtual("download")} />;
-  }
+  const navigate = useNavigate();
 
   return (
     <div className="container">
       <aside className="sidebar">
-        <div>
-          <ul>
-            <li onClick={() => setPaginaAtual("login")} style={{ cursor: "pointer" }}>
-              <span>👤</span> Login
-            </li>
-            <li><span>📄</span> Download</li>
-          </ul>
-        </div>
+        <ul>
+          <li onClick={() => navigate("/login")} style={{ cursor: "pointer" }}>
+            <span>👤</span> Login
+          </li>
+          <li><span>📄</span> Download</li>
+        </ul>
         <div className="contact-info">
           <p>empresaficticia@email.com</p>
           <p>55 41 9xxxx-xxxx</p>
