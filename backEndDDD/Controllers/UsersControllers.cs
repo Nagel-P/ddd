@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 namespace backEndDDD.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/users")]
     public class UsersControllers : ControllerBase
     {
         
