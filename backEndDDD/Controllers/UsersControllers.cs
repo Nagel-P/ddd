@@ -13,7 +13,12 @@ namespace backEndDDD.Controllers
     [Route("api/users")]
     public class UsersControllers : ControllerBase
     {
-        
+        [HttpPost]
+        public IActionResult Post([FromBody] Usuario usuario)
+            {
+            
+            return Ok(usuario);
+            }
         private readonly AppDbContext _appDbContext;
 
         public UsersControllers(AppDbContext appDbContext) 
