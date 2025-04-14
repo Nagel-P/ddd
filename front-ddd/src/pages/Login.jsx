@@ -26,17 +26,31 @@ const LoginPage = () => {
       email,
       senha,
       cpf,
-      telefone
+      telefone,
     };
 
     try {
-      const response = await axios.post("http://localhost:5207/api/users", usuario);
-      console.log("Resposta da API:", response.data);
-      alert("Usuário armazenado com sucesso!");
-      navigate("/"); // Redireciona para o catálogo após cadastro
+      // 1. Cadastrar o usuário
+      await axios.post("http://localhost:5207/api/users", usuario);
+      alert("Usuário cadastrado com sucesso!");
+
+      // 2. Fazer login automático
+      const loginResponse = await axios.post("http://localhost:5207/api/auth/login", {
+        email,
+        senha,
+      });
+
+      const { token } = loginResponse.data;
+
+      // 3. Armazenar o token
+      localStorage.setItem("token", token);
+
+      // 4. Redirecionar para tela de produtos
+      navigate("/produto");
+
     } catch (err) {
-      console.error("Erro ao conectar com API:", err.response?.data || err.message);
-      alert("Erro ao armazenar usuário!");
+      console.error("Erro ao cadastrar ou logar:", err.response?.data || err.message);
+      alert("Erro ao cadastrar ou logar usuário!");
     }
   };
 
@@ -57,22 +71,52 @@ const LoginPage = () => {
         <div className="login-box">
           <form onSubmit={handleSubmit}>
             <label>Email</label>
-            <input type="email" value={email} onChange={e => setEmail(e.target.value)} required />
+            <input
+              type="email"
+              value={email}
+              onChange={e => setEmail(e.target.value)}
+              required
+            />
 
             <label>Nome</label>
-            <input type="text" value={nome} onChange={e => setNome(e.target.value)} required />
+            <input
+              type="text"
+              value={nome}
+              onChange={e => setNome(e.target.value)}
+              required
+            />
 
             <label>CPF</label>
-            <input type="text" value={cpf} onChange={e => setCpf(e.target.value)} required />
+            <input
+              type="text"
+              value={cpf}
+              onChange={e => setCpf(e.target.value)}
+              required
+            />
 
             <label>Telefone</label>
-            <input type="text" value={telefone} onChange={e => setTelefone(e.target.value)} required />
+            <input
+              type="text"
+              value={telefone}
+              onChange={e => setTelefone(e.target.value)}
+              required
+            />
 
             <label>Senha</label>
-            <input type="password" value={senha} onChange={e => setSenha(e.target.value)} required />
+            <input
+              type="password"
+              value={senha}
+              onChange={e => setSenha(e.target.value)}
+              required
+            />
 
             <label>Confirmar Senha</label>
-            <input type="password" value={confirmarSenha} onChange={e => setConfirmarSenha(e.target.value)} required />
+            <input
+              type="password"
+              value={confirmarSenha}
+              onChange={e => setConfirmarSenha(e.target.value)}
+              required
+            />
 
             <button type="submit">Cadastrar</button>
           </form>

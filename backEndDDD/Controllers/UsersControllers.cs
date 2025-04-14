@@ -6,6 +6,11 @@ using backEndDDD.Data;
 using backEndDDD.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Text;
+using System.IdentityModel.Tokens.Jwt;
+using Microsoft.IdentityModel.Tokens;
+using System.Security.Claims;
+
 
 namespace backEndDDD.Controllers
 {
@@ -13,12 +18,7 @@ namespace backEndDDD.Controllers
     [Route("api/users")]
     public class UsersControllers : ControllerBase
     {
-        [HttpPost]
-        public IActionResult Post([FromBody] Usuario usuario)
-            {
-            
-            return Ok(usuario);
-            }
+ 
         private readonly AppDbContext _appDbContext;
 
         public UsersControllers(AppDbContext appDbContext) 
@@ -37,6 +37,46 @@ namespace backEndDDD.Controllers
             await _appDbContext.SaveChangesAsync();
 
             return Ok();
+        }
+
+        [HttpPost("login")]
+            public async Task<IActionResult> Login([FromBody] LoginRequest login)
+            {
+                var usuario = await _appDbContext.Usuarios
+                .FirstOrDefaultAsync(u => u.Email == login.Email && u.Senha == login.Senha);
+
+            if (usuario == null)
+            {
+                return Unauthorized("Email ou senha inválidos");
+            }
+
+            var token = GerarToken(usuario);
+                return Ok(new { token });
+            }
+
+        private string GerarToken(Usuario usuario)
+            {
+                var tokenHandler = new JwtSecurityTokenHandler();
+                var key = Encoding.ASCII.GetBytes("chave_super_secreta_123!"); // Substitua por algo mais seguro e mova para appsettings
+                var tokenDescriptor = new SecurityTokenDescriptor
+            {
+            Subject = new ClaimsIdentity(new[]
+            {
+                new Claim(ClaimTypes.Name, usuario.Nome),
+                new Claim(ClaimTypes.NameIdentifier, usuario.Id.ToString())
+            }),
+            Expires = DateTime.UtcNow.AddHours(2),
+            SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+        };
+
+        var token = tokenHandler.CreateToken(tokenDescriptor);
+        return tokenHandler.WriteToken(token);
+        }
+
+        public class LoginRequest
+        {
+            public string Email { get; set; }
+            public string Senha { get; set; }
         }
 
         [HttpGet]

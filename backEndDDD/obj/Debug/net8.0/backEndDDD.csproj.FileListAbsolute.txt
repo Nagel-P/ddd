@@ -152,3 +152,12 @@ D:\bkp\Documents\Geral\PROGRAMACAO\DDD\ddd\ddd\backEndDDD\obj\Debug\net8.0\refin
 D:\bkp\Documents\Geral\PROGRAMACAO\DDD\ddd\ddd\backEndDDD\obj\Debug\net8.0\backEndDDD.pdb
 D:\bkp\Documents\Geral\PROGRAMACAO\DDD\ddd\ddd\backEndDDD\obj\Debug\net8.0\backEndDDD.genruntimeconfig.cache
 D:\bkp\Documents\Geral\PROGRAMACAO\DDD\ddd\ddd\backEndDDD\obj\Debug\net8.0\ref\backEndDDD.dll
+D:\bkp\Documents\Geral\PROGRAMACAO\DDD\ddd\ddd\backEndDDD\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\bkp\Documents\Geral\PROGRAMACAO\DDD\ddd\ddd\backEndDDD\bin\Debug\net8.0\Microsoft.Bcl.Memory.dll
+D:\bkp\Documents\Geral\PROGRAMACAO\DDD\ddd\ddd\backEndDDD\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+D:\bkp\Documents\Geral\PROGRAMACAO\DDD\ddd\ddd\backEndDDD\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\bkp\Documents\Geral\PROGRAMACAO\DDD\ddd\ddd\backEndDDD\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+D:\bkp\Documents\Geral\PROGRAMACAO\DDD\ddd\ddd\backEndDDD\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
+D:\bkp\Documents\Geral\PROGRAMACAO\DDD\ddd\ddd\backEndDDD\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\bkp\Documents\Geral\PROGRAMACAO\DDD\ddd\ddd\backEndDDD\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+D:\bkp\Documents\Geral\PROGRAMACAO\DDD\ddd\ddd\backEndDDD\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
