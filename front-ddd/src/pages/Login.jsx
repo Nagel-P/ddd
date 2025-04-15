@@ -56,16 +56,29 @@ const LoginPage = () => {
 
   return (
     <div className="login-page">
-      <aside className="login-sidebar">
-        <button onClick={() => navigate("/")}>
-          <span>↩</span> Voltar
-        </button>
-        <div className="contact-info">
-          <p>empresaficticia@email.com</p>
-          <p>55 41 9xxxx-xxxx</p>
-          <p>Rua X, Curitiba - PR</p>
-        </div>
-      </aside>
+      <aside className="sidebar">
+      <ul>
+        <li onClick={() => navigate("/login")} style={{ cursor: "pointer" }}>
+          <span>📝</span> Cadastrar
+        </li>
+        <li onClick={() => navigate("/relogin")} style={{ cursor: "pointer" }}>
+          <span>🔑</span> Login
+        </li>
+        <li onClick={() => navigate("/produto")} style={{ cursor: "pointer" }}>
+          <span>📦</span> Catálogo
+        </li>
+        <li onClick={() => { localStorage.removeItem("token"); 
+            window.location.href = "/relogin"; // redireciona para login
+            }}>
+          <span>🚪</span> Sair
+        </li>
+      </ul>
+      <div className="contact-info">
+        <p>empresaficticia@email.com</p>
+        <p>55 41 9xxxx-xxxx</p>
+        <p>Rua X, Curitiba - PR</p>
+      </div>
+    </aside>
 
       <main className="login-main">
         <div className="login-box">

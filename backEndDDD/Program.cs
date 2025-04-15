@@ -43,7 +43,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             ValidIssuer = "suaapi.com", // deve bater com o issuer na geração do token
             ValidAudience = "suaapi.com",
             IssuerSigningKey = new SymmetricSecurityKey(
-                Encoding.UTF8.GetBytes("igao-lenda-inventou-o-backend"))
+                Encoding.UTF8.GetBytes("igao-lenda-inventou-o-backend(tem-que-ter-mais-bytes)"))
         };
     });
 
