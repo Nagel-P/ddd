@@ -14,7 +14,7 @@ const Produto = () => {
   if (token) {
     try {
       const decoded = jwtDecode(token);
-      nomeUsuario = decoded.nome || decoded.name || decoded.Nome;
+      nomeUsuario = decoded.Nome;
     } catch (e) {
       console.error("Token inválido ou expirado");
     }
