@@ -1,15 +1,17 @@
 using backEndDDD.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// 🌐 CORS
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAll", policy =>
@@ -20,12 +22,35 @@ builder.Services.AddCors(options =>
     });
 });
 
+// 📦 DbContext
 var connectionString = builder.Configuration.GetConnectionString("AppDbConnectionString");
-builder.Services.AddDbContext<AppDbContext>(options => options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString))
+);
 
+// 🔐 JWT Authentication
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
+    {
+        options.RequireHttpsMetadata = false; // Mantenha false em desenvolvimento
+        options.SaveToken = true;
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+            ValidIssuer = "suaapi.com", // deve bater com o issuer na geração do token
+            ValidAudience = "suaapi.com",
+            IssuerSigningKey = new SymmetricSecurityKey(
+                Encoding.UTF8.GetBytes("igao-lenda-inventou-o-backend(tem-que-ter-mais-bytes)"))
+        };
+    });
+
+// ✅ Criação da aplicação
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// 🔄 Pipeline de execução
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -34,10 +59,13 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.UseCors("AllowAll"); // <-- AQUI
+app.UseCors("AllowAll");
 
+// ⚠️ Ordem importante: autenticação antes da autorização
+app.UseAuthentication();
 app.UseAuthorization();
 
+// 🧭 Mapear controllers
 app.MapControllers();
 
 app.Run();
