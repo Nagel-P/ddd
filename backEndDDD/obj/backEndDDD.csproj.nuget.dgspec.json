@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\bkp\\Documents\\Geral\\PROGRAMACAO\\DDD\\ddd\\ddd\\backEndDDD\\backEndDDD.csproj": {}
+    "C:\\college-projects-sw\\ddd\\backEndDDD\\backEndDDD.csproj": {}
   },
   "projects": {
-    "D:\\bkp\\Documents\\Geral\\PROGRAMACAO\\DDD\\ddd\\ddd\\backEndDDD\\backEndDDD.csproj": {
+    "C:\\college-projects-sw\\ddd\\backEndDDD\\backEndDDD.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\bkp\\Documents\\Geral\\PROGRAMACAO\\DDD\\ddd\\ddd\\backEndDDD\\backEndDDD.csproj",
+        "projectUniqueName": "C:\\college-projects-sw\\ddd\\backEndDDD\\backEndDDD.csproj",
         "projectName": "backEndDDD",
-        "projectPath": "D:\\bkp\\Documents\\Geral\\PROGRAMACAO\\DDD\\ddd\\ddd\\backEndDDD\\backEndDDD.csproj",
-        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "D:\\bkp\\Documents\\Geral\\PROGRAMACAO\\DDD\\ddd\\ddd\\backEndDDD\\obj\\",
+        "projectPath": "C:\\college-projects-sw\\ddd\\backEndDDD\\backEndDDD.csproj",
+        "packagesPath": "C:\\Users\\Igor\\.nuget\\packages\\",
+        "outputPath": "C:\\college-projects-sw\\ddd\\backEndDDD\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Igor\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -95,7 +95,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
