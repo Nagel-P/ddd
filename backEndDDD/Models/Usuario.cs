@@ -13,5 +13,11 @@ namespace backEndDDD.Models
         public string Email { get; set; }
         public string Telefone { get; set; }
         public string Senha { get; set; }
+
+
+        public bool PagamentoConfirmado { get; set; } = false;
+        public bool AvaliacaoCompleta { get; set; } = false;
+        public double NotaAvaliacao { get; set; } = 0;
+        public string? CertificadoUrl { get; set; }
     }
 }
