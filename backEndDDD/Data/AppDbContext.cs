@@ -12,5 +12,10 @@ namespace backEndDDD.Data
         public AppDbContext(DbContextOptions options) : base(options) {}
 
         public DbSet <Usuario> Usuarios{ get; set; }
+
+        public DbSet<Avaliacao> Avaliacoes { get; set; }
+        public DbSet<Pergunta> Perguntas { get; set; }
+        public DbSet<RespostaUsuario> RespostasUsuario { get; set; }
+        public DbSet<Curso> Cursos { get; set; }
     }
 }

@@ -5,6 +5,7 @@ import Download from "./pages/Download";
 import Login from "./pages/Login";
 import ReLogin from "./pages/ReLogin";
 import ProtectedRoute from "./ProtectedRoute";
+import Avaliacao from "./pages/Avaliacao"; //
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
         <Route path="/produto" element={<Produto />} />
         <Route path="/login" element={<Login />} />
         <Route path="/relogin" element={<ReLogin />} />
+        <Route path="/avaliacao" element={<Avaliacao />} />
 
         {/* Rota protegida para pagamento */}
         <Route
