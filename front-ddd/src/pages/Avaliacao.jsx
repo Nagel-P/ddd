@@ -63,7 +63,7 @@ const Avaliacao = () => {
           </p>
           <button
             className="button"
-            onClick={() => window.open("")}
+            onClick={() => navigate("/questoes")} style={{ cursor: "pointer" }}
           >
             📝 Realizar Avaliação
           </button>
