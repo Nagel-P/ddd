@@ -1,160 +1,476 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+/* Tema escuro */
+.dark-theme {
+  background-color: #121212;
+  color: #e0e0e0;
 }
 
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f3f4f6;
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden; 
+.dark-theme .product-description h1,
+.dark-theme .product-description p,
+.dark-theme .benefits-section h2,
+.dark-theme .card-content h3 {
+  color: #ffffff;
 }
 
-.container {
-  display: flex;
-  height: 100vh; 
-  width: 100vw; 
+.dark-theme .product-description p,
+.dark-theme .card-content p {
+  color: #b0b0b0;
 }
 
-.sidebar {
-  width: 18%;
-  min-width: 200px; 
-  max-width: 250px;
-  background-color: #c2a8ff;
-  padding: 15px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+/* Header com gradiente melhorado */
+.header {
+  background: linear-gradient(135deg, #8a2be2, #ff1493, #4b0082);
+  background-size: 200% 200%;
+  animation: gradient 10s ease infinite;
+  color: white;
+  padding: 1rem 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  position: relative;
+  z-index: 100;
 }
 
-.sidebar ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
-.sidebar li {
+/* Botões melhorados */
+.nav-button {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: white;
+  padding: 0.6rem 1.2rem;
+  margin-left: 0.5rem;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s;
   display: flex;
   align-items: center;
-  font-size: 1.1rem;
-  margin-bottom: 15px;
-  cursor: pointer;
-}
-
-.sidebar li span {
-  margin-right: 10px;
-}
-
-.sidebar .contact-info {
+  gap: 0.5rem;
   font-size: 0.9rem;
-  margin-top: 20px;
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.main-content {
+.nav-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Card de produto no estilo de referência */
+.product-display {
+  display: flex;
+  justify-content: center;
+  margin: 3rem 0;
+}
+
+.plan {
+  border-radius: 16px;
+  box-shadow: 0 30px 30px -25px rgba(138, 43, 226, 0.3);
+  padding: 10px;
+  background-color: #1e1e1e;
+  color: #b0b0b0;
+  max-width: 350px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #333;
+}
+
+.plan strong {
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.plan .inner {
+  align-items: center;
+  padding: 20px;
+  padding-top: 40px;
+  background-color: #252525;
+  border-radius: 12px;
+  position: relative;
+  z-index: 1;
+}
+
+.plan .pricing {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: linear-gradient(135deg, #8a2be2, #ff1493);
+  border-radius: 99em 0 0 99em;
+  display: flex;
+  align-items: center;
+  padding: 0.625em 0.75em;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: white;
+  z-index: 2;
+}
+
+.plan .pricing small {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.75em;
+  margin-left: 0.25em;
+}
+
+.plan .title {
+  font-weight: 600;
+  font-size: 1.5rem;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+}
+
+.plan .title + * {
+  margin-top: 0.75rem;
+}
+
+.plan .info {
+  color: #b0b0b0;
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+}
+
+.plan .info + * {
+  margin-top: 1rem;
+}
+
+.plan .features {
+  display: flex;
+  flex-direction: column;
+  margin: 1.5rem 0;
+}
+
+.plan .features li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.9rem;
+}
+
+.plan .features .icon {
+  background-color: #8a2be2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.plan .features .icon svg {
+  width: 14px;
+  height: 14px;
+}
+
+.plan .action {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.plan .button {
+  background: linear-gradient(135deg, #8a2be2, #ff1493);
+  border-radius: 6px;
+  color: #fff;
+  font-weight: 500;
+  font-size: 1rem;
+  text-align: center;
+  border: 0;
+  outline: 0;
+  width: 100%;
+  padding: 0.8rem 1rem;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.plan .button:hover {
+  background: linear-gradient(135deg, #7b1fa2, #e91e63);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(138, 43, 226, 0.3);
+}
+
+.pdf-preview {
+  text-align: center;
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background-color: #252525;
+  border-radius: 8px;
+}
+
+.pdf-preview img {
+  width: 150px;
+  height: auto;
+  margin-bottom: 0.5rem;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.pdf-preview p {
+  font-size: 0.8rem;
+  color: #b0b0b0;
+  margin-top: 0.5rem;
+}
+
+.benefit-card {
+  background: rgba(30, 30, 30, 0.7);
+  border-radius: 12px;
+  padding: 20px;
+  border: 1px solid rgba(138, 43, 226, 0.3);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.benefit-card:hover {
+  transform: translateY(-5px);
+  border-color: #8a2be2;
+  box-shadow: 0 12px 24px rgba(138, 43, 226, 0.3);
+}
+
+.card-image-container {
+  width: 100%;
+  height: 160px;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.benefit-card:hover .card-image {
+  transform: scale(1.05);
+}
+
+.card-content {
   flex: 1;
   display: flex;
-  align-items: center; 
-  justify-content: center; 
-  padding: 20px;
-  width: calc(100vw - 250px);
-  overflow-y: auto;
-}
-
-
-.product-descricao {
-  text-align: justify;
-  margin: 0 auto; 
-  padding: 20px;
-  max-width: 600px;
-  width: 90%; 
-}
-
-.product-info {
-  background-color: white;
-  padding: 30px;
-  border-radius: 10px;
-  display: flex;
   flex-direction: column;
-  align-items: center;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-content h3 {
+  color: #ffffff;
+  font-size: 1.3rem;
+  margin: 0 0 0.8rem 0;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.card-content h3::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 40px;
+  height: 2px;
+  background: linear-gradient(135deg, #8a2be2, #ff1493);
+}
+
+.card-content p {
+  color: #b0b0b0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin: 0;
+  flex: 1;
+}
+
+/* Ajuste no container de benefícios */
+.benefits-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin: 3rem 0;
+}
+
+/* Footer */
+.footer {
+  background-color: #0a0a0a;
+  color: #b0b0b0;
   text-align: center;
-  max-width: 90%;
-  width: min(500px, 90vw); 
-}
-.product-info h1 {
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-
-.capa {
-  width: 100%;
-  max-width: 300px;
-  height: auto;
-  margin-bottom: 10px;
-}
-
-.button {
-  margin-top: 15px;
-  background-color: #b399ff;
-  color: white;
-  border: none;
-  padding: 12px 20px;
-  font-size: 1rem;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.3s;
-  width: 80%;
-  max-width: 200px;
-}
-
-.button:hover {
-  background-color: #9f85ff;
+  padding: 2rem 0;
+  margin-top: 3rem;
+  border-top: 1px solid #333;
 }
 
 /* Responsividade */
-@media (max-width: 1024px) {
-  .sidebar {
-      width: 20%;
-      max-width: 200px;
+@media (max-width: 768px) {
+  .header-content {
+    flex-direction: column;
   }
   
-  .main-content {
-      width: calc(100vw - 200px);
+  .nav-menu {
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
   }
+  
+  .nav-button {
+    margin: 0.25rem;
+    font-size: 0.8rem;
+    padding: 0.5rem 1rem;
+  }
+  
+  .plan {
+    max-width: 100%;
+  }
+}
+/* Header com menu horizontal */
+.header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+}
 
-  .product-info {
-      width: 95%;
+.nav-menu {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.nav-button {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  white-space: nowrap; /* Impede que o texto quebre em várias linhas */
+  margin: 0; /* Remove margens anteriores */
+}
+
+/* Ajustes para mobile */
+@media (max-width: 768px) {
+  .header-content {
+    flex-direction: row; /* Mantém horizontal mesmo em mobile */
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0.5rem;
+  }
+  
+  .logo {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+  
+  .nav-menu {
+    gap: 0.3rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .nav-button {
+    padding: 0.5rem 0.8rem;
+    font-size: 0.8rem;
   }
 }
 
-@media (max-width: 768px) {
-  .container {
-      flex-direction: column;
-      height: auto;
+@media (max-width: 480px) {
+  .nav-button span {
+    display: none; /* Esconde ícones em telas muito pequenas */
   }
+  
+  .nav-button {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.7rem;
+  }
+}
 
-  .sidebar {
-      width: 100%;
-      padding: 10px;
-      text-align: center;
-  }
+/* Adicione estas regras ao seu arquivo Produto.css */
 
-  .main-content {
-      width: 100%;
-      padding: 15px;
-  }
+.logo-button {
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+}
 
-  .product-info {
-      width: 90%;
-  }
+.logo-button:hover {
+  transform: translateY(-2px);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
 
-  .product-descricao {
-      width: 90%;
-  }
+.benefits-section h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #ffffff;
+  position: relative;
+  padding-bottom: 1rem;
+}
 
-  .button {
-      width: 100%;
-  }
+.benefits-section h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 3px;
+  background: linear-gradient(135deg, #8a2be2, #ff1493);
+}
+
+.benefit-card {
+  background: #1e1e1e;
+  border: 1px solid #333;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.benefit-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(138, 43, 226, 0.2);
+  border-color: #8a2be2;
+}
+
+.card-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-bottom: 1px solid #333;
+}
+
+.card-content {
+  padding: 1.5rem;
+}
+
+.card-content h3 {
+  margin-top: 0;
+  color: #ffffff;
+  font-size: 1.2rem;
+}
+
+.card-content p {
+  color: #b0b0b0;
+  font-size: 0.9rem;
+  margin-bottom: 0;
 }
