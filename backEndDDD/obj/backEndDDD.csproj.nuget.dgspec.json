@@ -1,6 +1,7 @@
 {
   "format": 1,
   "restore": {
+<<<<<<< HEAD
     "D:\\bkp\\Documents\\Geral\\PROGRAMACAO\\React\\DDD\\ddd\\ddd\\backEndDDD\\backEndDDD.csproj": {}
   },
   "projects": {
@@ -12,6 +13,19 @@
         "projectPath": "D:\\bkp\\Documents\\Geral\\PROGRAMACAO\\React\\DDD\\ddd\\ddd\\backEndDDD\\backEndDDD.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
         "outputPath": "D:\\bkp\\Documents\\Geral\\PROGRAMACAO\\React\\DDD\\ddd\\ddd\\backEndDDD\\obj\\",
+=======
+    "D:\\bkp\\Documents\\Geral\\PROGRAMACAO\\DDD\\ddd\\ddd\\backEndDDD\\backEndDDD.csproj": {}
+  },
+  "projects": {
+    "D:\\bkp\\Documents\\Geral\\PROGRAMACAO\\DDD\\ddd\\ddd\\backEndDDD\\backEndDDD.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\bkp\\Documents\\Geral\\PROGRAMACAO\\DDD\\ddd\\ddd\\backEndDDD\\backEndDDD.csproj",
+        "projectName": "backEndDDD",
+        "projectPath": "D:\\bkp\\Documents\\Geral\\PROGRAMACAO\\DDD\\ddd\\ddd\\backEndDDD\\backEndDDD.csproj",
+        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+        "outputPath": "D:\\bkp\\Documents\\Geral\\PROGRAMACAO\\DDD\\ddd\\ddd\\backEndDDD\\obj\\",
+>>>>>>> 9a277060a079bb04570959f1bde1894dca6c6398
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -43,19 +57,33 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[7.0.7, )"
+              "version": "[8.0.13, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.13, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[7.0.7, )"
+              "version": "[8.0.13, )"
+            },
+            "Microsoft.IdentityModel.Tokens": {
+              "target": "Package",
+              "version": "[8.8.0, )"
             },
             "Pomelo.EntityFrameworkCore.MySql": {
               "target": "Package",
-              "version": "[7.0.0, )"
+              "version": "[8.0.3, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",

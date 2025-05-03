@@ -1,33 +1,37 @@
-import React, { useState } from "react";
-import LoginPage from "./Login";
-import "../style/Pagamento.css"; // Reutiliza o estilo existente
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import "../style/Pagamento.css";
 
-const Pagamento = ({ onAprovar, onCancelar }) => {
-  const [paginaAtual, setPaginaAtual] = useState("pagamento");
+const Pagamento = () => {
   const [processando, setProcessando] = useState(false);
-
-  if (paginaAtual === "login") {
-    return <LoginPage voltar={() => setPaginaAtual("pagamento")} />;
-  }
+  const navigate = useNavigate();
 
   const simularPagamento = () => {
     setProcessando(true);
     setTimeout(() => {
-      onAprovar();
-    }, 2000); // Simula um delay para "processar pagamento"
+      navigate("/download");
+    }, 2000);
   };
 
   return (
     <div className="container">
       <aside className="sidebar">
-        <div>
-          <ul>
-            <li onClick={() => setPaginaAtual("login")} style={{ cursor: "pointer" }}>
-              <span>👤</span> Login
-            </li>
-            <li onClick={onCancelar}><span>⬅️</span> Voltar</li>
-          </ul>
-        </div>
+        <ul>
+          <li onClick={() => navigate("/relogin")} style={{ cursor: "pointer" }}>
+            <span>🔑</span> Login
+          </li>
+          <li onClick={() => navigate("/produto")} style={{ cursor: "pointer" }}>
+            <span>📦</span> Catálogo
+          </li>
+          <li
+            onClick={() => {
+              localStorage.removeItem("token");
+              window.location.href = "/relogin";
+            }}
+          >
+            <span>🚪</span> Sair
+          </li>
+        </ul>
         <div className="contact-info">
           <p>empresaficticia@email.com</p>
           <p>55 41 9xxxx-xxxx</p>
@@ -39,10 +43,22 @@ const Pagamento = ({ onAprovar, onCancelar }) => {
         <div className="product-info">
           <h1>Pagamento</h1>
           <p>Escolha uma forma de pagamento para continuar.</p>
-          <button className="button" onClick={simularPagamento} disabled={processando}>
+          <button
+            className="button"
+            onClick={simularPagamento}
+            disabled={processando}
+          >
             {processando ? "Processando..." : "Confirmar Pagamento"}
           </button>
-          <button className="button" onClick={onCancelar} style={{ backgroundColor: '#ccc', color: '#000', marginTop: '10px' }}>
+          <button
+            className="button"
+            onClick={() => navigate("/produto")}
+            style={{
+              backgroundColor: "#ccc",
+              color: "#000",
+              marginTop: "10px",
+            }}
+          >
             Cancelar
           </button>
         </div>

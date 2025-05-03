@@ -6,82 +6,128 @@ using backEndDDD.Data;
 using backEndDDD.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Text;
+using System.IdentityModel.Tokens.Jwt;
+using Microsoft.IdentityModel.Tokens;
+using System.Security.Claims;
 
 namespace backEndDDD.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
-    public class UsersControllers : ControllerBase
+    [Route("api/users")]
+    public class UsersController : ControllerBase
     {
-        
-        private readonly AppDbContext _appDbContext;
+        private readonly AppDbContext _context;
 
-        public UsersControllers(AppDbContext appDbContext) 
+        public UsersController(AppDbContext context)
         {
-            _appDbContext = appDbContext;
+            _context = context;
         }
 
+        // POST: api/users
         [HttpPost]
-        public async Task<IActionResult> AddUsuario(Usuario usuario) 
+        public async Task<IActionResult> CadastrarUsuario(Usuario usuario)
         {
-            if (usuario == null){
+            if (usuario == null)
                 return BadRequest("Dados inválidos.");
-            }
 
-            _appDbContext.Usuarios.Add(usuario);
-            await _appDbContext.SaveChangesAsync();
+            _context.Usuarios.Add(usuario);
+            await _context.SaveChangesAsync();
 
-            return Ok();
+            return Ok("Usuário cadastrado com sucesso.");
         }
 
-        [HttpGet]
-        public async Task<ActionResult <IEnumerable<Usuario>>> GetUsuarios()
+        // POST: api/users/login
+        [HttpPost("login")]
+        public async Task<IActionResult> Login([FromBody] LoginRequest login)
         {
-            var usuarios = await _appDbContext.Usuarios.ToListAsync();
+            var usuario = await _context.Usuarios
+                .FirstOrDefaultAsync(u => u.Email == login.Email && u.Senha == login.Senha);
 
+            if (usuario == null)
+                return Unauthorized("Email ou senha inválidos.");
+
+            var token = GerarToken(usuario);
+
+            return Ok(new { token });
+        }
+
+        // Gera o token JWT com os dados do usuário
+        private string GerarToken(Usuario usuario)
+        {
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var key = Encoding.ASCII.GetBytes("igao-lenda-inventou-o-backend(tem-que-ter-mais-bytes)");
+
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Subject = new ClaimsIdentity(new[]
+                {
+                    new Claim("nome", usuario.Nome),            // Para exibir no front-end
+                    new Claim("id", usuario.Id.ToString())      // Caso precise do ID no front
+                }),
+                Expires = DateTime.UtcNow.AddHours(2),
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+            };
+
+            var token = tokenHandler.CreateToken(tokenDescriptor);
+            return tokenHandler.WriteToken(token);
+        }
+
+        // GET: api/users
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Usuario>>> ObterUsuarios()
+        {
+            var usuarios = await _context.Usuarios.ToListAsync();
             return Ok(usuarios);
         }
 
+        // GET: api/users/{id}
         [HttpGet("{id}")]
-        public async Task<ActionResult <Usuario>> GetUsuario(int id)
+        public async Task<ActionResult<Usuario>> ObterUsuarioPorId(int id)
         {
-            var usuario = await _appDbContext.Usuarios.FindAsync(id);
+            var usuario = await _context.Usuarios.FindAsync(id);
 
-            if (usuario == null){
-                return NotFound($"Usuário com o id - {id} não foi encontrado!");
-            }
+            if (usuario == null)
+                return NotFound($"Usuário com o ID {id} não foi encontrado.");
 
             return Ok(usuario);
         }
 
-        [HttpPut ("{id}")]
-        public async Task<IActionResult> UpdateUsuario(int id, [FromBody] Usuario usuarioAtualizado)
+        // PUT: api/users/{id}
+        [HttpPut("{id}")]
+        public async Task<IActionResult> AtualizarUsuario(int id, [FromBody] Usuario usuarioAtualizado)
         {
-            var usuarioExistente = await _appDbContext.Usuarios.FindAsync(id);
+            var usuarioExistente = await _context.Usuarios.FindAsync(id);
 
-            if (usuarioExistente == null) {
-                return NotFound($"Usuário com o id - {id} não foi encontrado!");
-            }
+            if (usuarioExistente == null)
+                return NotFound($"Usuário com o ID {id} não foi encontrado.");
 
-            _appDbContext.Entry(usuarioExistente).CurrentValues.SetValues(usuarioAtualizado);
+            _context.Entry(usuarioExistente).CurrentValues.SetValues(usuarioAtualizado);
+            await _context.SaveChangesAsync();
 
-            await _appDbContext.SaveChangesAsync();
-
-            return StatusCode(201, usuarioAtualizado);
+            return Ok("Usuário atualizado com sucesso.");
         }
 
+        // DELETE: api/users/{id}
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteUsuario (int id) {
-            var usuario = await _appDbContext.Usuarios.FindAsync (id);
+        public async Task<IActionResult> DeletarUsuario(int id)
+        {
+            var usuario = await _context.Usuarios.FindAsync(id);
 
-            if (usuario == null){
-                return NotFound($"Usuário com  o id - {id} não foi encontrado!");
-            }
+            if (usuario == null)
+                return NotFound($"Usuário com o ID {id} não foi encontrado.");
 
-            _appDbContext.Remove(usuario);
-            await _appDbContext.SaveChangesAsync();
+            _context.Usuarios.Remove(usuario);
+            await _context.SaveChangesAsync();
 
-            return Ok($"Personagem com o ID - {id} foi removido com sucesso!");
+            return Ok("Usuário removido com sucesso.");
+        }
+
+        // Classe auxiliar para login
+        public class LoginRequest
+        {
+            public string Email { get; set; }
+            public string Senha { get; set; }
         }
     }
 }

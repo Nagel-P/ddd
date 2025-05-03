@@ -1,25 +1,38 @@
-import React, { useState } from "react";
-import Login from "./Login";
-import "../style/Download.css";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 const Download = () => {
-  const [paginaAtual, setPaginaAtual] = useState("download");
+  const navigate = useNavigate();
 
-  if (paginaAtual === "login") {
-    return <Login voltar={() => setPaginaAtual("download")} />;
-  }
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      navigate("/relogin");
+    }
+  }, [navigate]);
 
   return (
     <div className="container">
       <aside className="sidebar">
-        <div>
-          <ul>
-            <li onClick={() => setPaginaAtual("login")} style={{ cursor: "pointer" }}>
-              <span>👤</span> Login
-            </li>
-            <li><span>📄</span> Download</li>
-          </ul>
-        </div>
+        <ul>
+          <li onClick={() => navigate("/relogin")} style={{ cursor: "pointer" }}>
+            <span>🔑</span> Login
+          </li>
+          <li onClick={() => navigate("/produto")} style={{ cursor: "pointer" }}>
+            <span>📦</span> Catálogo
+          </li>
+          <li onClick={() => navigate("/avaliacao")} style={{ cursor: "pointer" }}>
+            <span>⭐</span> Avaliação
+          </li>
+          <li
+            onClick={() => {
+              localStorage.removeItem("token");
+              window.location.href = "/relogin";
+            }}
+          >
+            <span>🚪</span> Sair
+          </li>
+        </ul>
         <div className="contact-info">
           <p>empresaficticia@email.com</p>
           <p>55 41 9xxxx-xxxx</p>

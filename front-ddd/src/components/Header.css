@@ -1,0 +1,22 @@
+.custom-header {
+    width: 100%;
+    padding: 40px 20px;
+    background: linear-gradient(135deg, #8e44ad, #ff5e8e, #000000);
+    color: white;
+    text-align: center;
+  }
+  
+  .header-content {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  
+  .product-name {
+    font-size: 3rem;
+    margin-bottom: 10px;
+  }
+  
+  .product-description {
+    font-size: 1.2rem;
+    opacity: 0.9;
+  }
