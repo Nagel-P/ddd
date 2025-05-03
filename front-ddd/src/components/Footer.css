@@ -1,0 +1,9 @@
+.custom-footer {
+    background-color: #000000;
+    color: #aaaaaa;
+    text-align: center;
+    padding: 20px;
+    font-size: 0.95rem;
+    margin-top: 60px;
+    border-top: 2px solid #2e2e2e;
+  }  
