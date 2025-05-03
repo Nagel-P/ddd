@@ -6,6 +6,7 @@ import Login from "./pages/Login";
 import ReLogin from "./pages/ReLogin";
 import ProtectedRoute from "./ProtectedRoute";
 import Avaliacao from "./pages/Avaliacao"; //
+import Questoes from "./pages/Questoes";
 
 
 const App = () => {
@@ -17,6 +18,7 @@ const App = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/relogin" element={<ReLogin />} />
         <Route path="/avaliacao" element={<Avaliacao />} />
+        <Route path="/questoes" element={<Questoes />} />
 
         {/* Rota protegida para pagamento */}
 
