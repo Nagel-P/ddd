@@ -50,6 +50,30 @@ const Produto = () => {
       image: "https://images.unsplash.com/photo-1517430816045-df4b7de11d1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&q=80"
     }
   ];
+  return (
+    <div className="container">
+      <aside className="sidebar">
+        <ul>
+        <li onClick={() => navigate("/relogin")} style={{ cursor: "pointer" }}>
+            <span>🔑</span> {nomeUsuario || "Login"}
+          </li>
+          <li onClick={() => navigate("/login")} style={{ cursor: "pointer" }}>
+            <span>📝</span> Cadastrar
+          </li>
+          <li onClick={() => navigate("/produto")} style={{ cursor: "pointer" }}>
+            <span>📦</span> Catálogo
+          </li>
+
+          <li
+            onClick={() => {
+              localStorage.removeItem("token");
+              window.location.href = "/relogin";
+            }}
+            style={{ cursor: "pointer" }}
+          >
+            <span>🚪</span> Sair
+          </li>
+        </ul>
 
   return (
     <div className="product-page dark-theme">

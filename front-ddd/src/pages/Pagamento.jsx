@@ -17,9 +17,6 @@ const Pagamento = () => {
     <div className="container">
       <aside className="sidebar">
         <ul>
-          <li onClick={() => navigate("/login")} style={{ cursor: "pointer" }}>
-            <span>📝</span> Cadastrar
-          </li>
           <li onClick={() => navigate("/relogin")} style={{ cursor: "pointer" }}>
             <span>🔑</span> Login
           </li>
