@@ -13,11 +13,10 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("backEndDDD")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c8b836a85220c8e5d2a3e87d08df42f7576b89d9")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ac3e5a8686aa3ad227d77f234203168cb41cb6cb")]
 [assembly: System.Reflection.AssemblyProductAttribute("backEndDDD")]
 [assembly: System.Reflection.AssemblyTitleAttribute("backEndDDD")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
 
-// Gerado pela classe WriteCodeFragment do MSBuild.
 // Gerado pela classe WriteCodeFragment do MSBuild.
 

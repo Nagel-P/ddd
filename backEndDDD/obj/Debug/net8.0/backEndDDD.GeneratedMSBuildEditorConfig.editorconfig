@@ -9,19 +9,11 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = backEndDDD
 build_property.RootNamespace = backEndDDD
-<<<<<<< HEAD
 build_property.ProjectDir = D:\bkp\Documents\Geral\PROGRAMACAO\React\DDD\ddd\ddd\backEndDDD\
-=======
-build_property.ProjectDir = D:\bkp\Documents\Geral\PROGRAMACAO\DDD\ddd\ddd\backEndDDD\
->>>>>>> 9a277060a079bb04570959f1bde1894dca6c6398
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-<<<<<<< HEAD
 build_property.MSBuildProjectDirectory = D:\bkp\Documents\Geral\PROGRAMACAO\React\DDD\ddd\ddd\backEndDDD
-=======
-build_property.MSBuildProjectDirectory = D:\bkp\Documents\Geral\PROGRAMACAO\DDD\ddd\ddd\backEndDDD
->>>>>>> 9a277060a079bb04570959f1bde1894dca6c6398
 build_property._RazorSourceGeneratorDebug = 

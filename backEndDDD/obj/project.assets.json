@@ -2931,7 +2931,6 @@
   },
   "packageFolders": {
     "C:\\Users\\User\\.nuget\\packages\\": {}
-    "C:\\Users\\User\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
@@ -2943,7 +2942,6 @@
       "outputPath": "D:\\bkp\\Documents\\Geral\\PROGRAMACAO\\React\\DDD\\ddd\\ddd\\backEndDDD\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config"
         "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
@@ -3025,7 +3023,6 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
       }
     }
