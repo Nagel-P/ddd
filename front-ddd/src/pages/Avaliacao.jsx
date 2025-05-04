@@ -7,7 +7,7 @@ const Avaliacao = () => {
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (!token) {
-      navigate("/relogin");
+      navigate("/login");
     }
   }, [navigate]);
 
@@ -15,7 +15,7 @@ const Avaliacao = () => {
     <div className="container">
       <aside className="sidebar">
         <ul>
-          <li onClick={() => navigate("/relogin")} style={{ cursor: "pointer" }}>
+          <li onClick={() => navigate("/login")} style={{ cursor: "pointer" }}>
             <span>🔑</span> Login
           </li>
           <li onClick={() => navigate("/produto")} style={{ cursor: "pointer" }}>
@@ -27,7 +27,7 @@ const Avaliacao = () => {
           <li
             onClick={() => {
               localStorage.removeItem("token");
-              window.location.href = "/relogin";
+              window.location.href = "/login";
             }}
           >
             <span>🚪</span> Sair

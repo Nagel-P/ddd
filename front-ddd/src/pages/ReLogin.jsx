@@ -3,6 +3,9 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 import "../style/Login.css";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+
 
 const ReLogin = () => {
   const navigate = useNavigate();
@@ -49,31 +52,7 @@ const ReLogin = () => {
 
   return (
     <div className="login-page dark-theme">
-      <header className="header">
-        <div className="header-content">
-          <div className="logo-button" onClick={() => navigate("/produto")}>
-          7Tech
-          </div>
-          <nav className="nav-menu">
-            <button className="nav-button" onClick={() => navigate("/login")}>
-              <span>📝</span> Cadastrar
-            </button>
-            <button className="nav-button" onClick={() => navigate("/relogin")}>
-              <span>🔑</span> {nomeUsuario || "Login"}
-            </button>
-            {token && (
-              <button className="nav-button" onClick={() => {
-                localStorage.removeItem("token");
-                sessionStorage.removeItem("token");
-                window.location.href = "/relogin";
-              }}>
-                <span>🚪</span> Sair
-              </button>
-            )}
-          </nav>
-        </div>
-      </header>
-
+      <Header/>
       <main className="login-main-container">
         <div className="login-card">
           <h2>Acesse Sua Conta</h2>
@@ -124,10 +103,7 @@ const ReLogin = () => {
           </form>
         </div>
       </main>
-
-      <footer className="footer">
-        <p>&copy; {new Date().getFullYear()} 7Tech. Todos os direitos reservados.</p>
-      </footer>
+      <Footer/>
     </div>
   );
 };

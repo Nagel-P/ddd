@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 
+
 export default function Questoes() {
   const { cursoId } = useParams();
   const navigate = useNavigate();
@@ -9,7 +10,7 @@ export default function Questoes() {
   const [respostas, setRespostas] = useState({});
   const [carregando, setCarregando] = useState(true);
 
-  const usuarioId = localStorage.getItem("usuarioId"); // Supondo que salva assim
+  const usuarioId = localStorage.getItem("usuarioId");
 
   useEffect(() => {
     async function verificarECarregar() {

@@ -1,54 +1,62 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import { jwtDecode } from "jwt-decode";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import "../style/Download.css";
+import DDDescomplicaPDF from "../assets/DDDescomplica.pdf"; // Importe o arquivo PDF
 
 const Download = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem("token") || sessionStorage.getItem("token");
+    
     if (!token) {
-      navigate("/relogin");
+      navigate("/login");
+      return;
+    }
+
+    try {
+      jwtDecode(token);
+    } catch (error) {
+      localStorage.removeItem("token");
+      sessionStorage.removeItem("token");
+      navigate("/login");
     }
   }, [navigate]);
 
-  return (
-    <div className="container">
-      <aside className="sidebar">
-        <ul>
-          <li onClick={() => navigate("/relogin")} style={{ cursor: "pointer" }}>
-            <span>🔑</span> Login
-          </li>
-          <li onClick={() => navigate("/produto")} style={{ cursor: "pointer" }}>
-            <span>📦</span> Catálogo
-          </li>
-          <li onClick={() => navigate("/avaliacao")} style={{ cursor: "pointer" }}>
-            <span>⭐</span> Avaliação
-          </li>
-          <li
-            onClick={() => {
-              localStorage.removeItem("token");
-              window.location.href = "/relogin";
-            }}
-          >
-            <span>🚪</span> Sair
-          </li>
-        </ul>
-        <div className="contact-info">
-          <p>empresaficticia@email.com</p>
-          <p>55 41 9xxxx-xxxx</p>
-          <p>Rua X, Curitiba - PR</p>
-        </div>
-      </aside>
+  const handleStartEvaluation = () => {
+    navigate("/avaliacao");
+  };
 
-      <main className="main-content">
-        <div className="product-info">
+  return (
+    <div className="download-container dark-theme">
+      <Header />
+      <main className="download-main">
+        <div className="download-card">
           <h1>Obrigado pela compra!</h1>
           <p>Seu arquivo está pronto para download.</p>
-          <a href="/externals/arquivo.pdf" download>
-            <button className="button">📥 Baixar Arquivo</button>
+          <a 
+            href={DDDescomplicaPDF} 
+            download="DDDescomplica.pdf" 
+            className="download-link"
+          >
+            <button className="download-button">Baixar Arquivo</button>
           </a>
         </div>
+        
+        <div className="evaluation-section">
+          <button 
+            onClick={handleStartEvaluation}
+            className="evaluation-button"
+          >
+            Começar avaliação
+          </button>
+          <p className="evaluation-hint">Faça a avaliação para gerar seu certificado online</p>
+        </div>
       </main>
+      <Footer />
     </div>
   );
 };

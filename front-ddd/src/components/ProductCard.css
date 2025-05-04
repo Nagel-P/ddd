@@ -1,0 +1,151 @@
+.plan {
+    border-radius: 16px;
+    box-shadow: 0 30px 30px -25px rgba(138, 43, 226, 0.3);
+    padding: 10px;
+    background-color: #1e1e1e;
+    color: #b0b0b0;
+    max-width: 350px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #333;
+  }
+  
+  .plan strong {
+    font-weight: 600;
+    color: #ffffff;
+  }
+  
+  .plan .inner {
+    align-items: center;
+    padding: 20px;
+    padding-top: 40px;
+    background-color: #252525;
+    border-radius: 12px;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .plan .pricing {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: linear-gradient(135deg, #8a2be2, #ff1493);
+    border-radius: 99em 0 0 99em;
+    display: flex;
+    align-items: center;
+    padding: 0.625em 0.75em;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: white;
+    z-index: 2;
+  }
+  
+  .plan .pricing small {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.75em;
+    margin-left: 0.25em;
+  }
+  
+  .plan .title {
+    font-weight: 600;
+    font-size: 1.5rem;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+  }
+  
+  .plan .title + * {
+    margin-top: 0.75rem;
+  }
+  
+  .plan .info {
+    color: #b0b0b0;
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .plan .info + * {
+    margin-top: 1rem;
+  }
+  
+  .plan .features {
+    display: flex;
+    flex-direction: column;
+    margin: 1.5rem 0;
+  }
+  
+  .plan .features li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+    font-size: 0.9rem;
+  }
+  
+  .plan .features .icon {
+    background-color: #8a2be2;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+  }
+  
+  .plan .features .icon svg {
+    width: 14px;
+    height: 14px;
+  }
+  
+  .plan .action {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1.5rem;
+  }
+  
+  .plan .button {
+    background: linear-gradient(135deg, #8a2be2, #ff1493);
+    border-radius: 6px;
+    color: #fff;
+    font-weight: 500;
+    font-size: 1rem;
+    text-align: center;
+    border: 0;
+    outline: 0;
+    width: 100%;
+    padding: 0.8rem 1rem;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  
+  .plan .button:hover {
+    background: linear-gradient(135deg, #7b1fa2, #e91e63);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(138, 43, 226, 0.3);
+  }
+  
+  /* Preview de PDF */
+  .pdf-preview {
+    text-align: center;
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background-color: #252525;
+    border-radius: 8px;
+  }
+  
+  .pdf-preview img {
+    width: 150px;
+    height: auto;
+    margin-bottom: 0.5rem;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .pdf-preview p {
+    font-size: 0.8rem;
+    color: #b0b0b0;
+    margin-top: 0.5rem;
+  }  

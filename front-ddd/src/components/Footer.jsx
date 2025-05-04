@@ -3,8 +3,8 @@ import './Footer.css';
 
 const Footer = () => {
   return (
-    <footer className="custom-footer">
-      <p>© {new Date().getFullYear()} Nome da Empresa — Todos os direitos reservados.</p>
+    <footer className="footer">
+        <p>&copy; {new Date().getFullYear()} 7Tech. Todos os direitos reservados.</p>
     </footer>
   );
 };

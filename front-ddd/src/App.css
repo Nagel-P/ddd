@@ -84,13 +84,7 @@ body {
 }
 
 /* Footer */
-.footer {
-  background-color: var(--dark-color);
-  color: white;
-  text-align: center;
-  padding: 2rem 0;
-  margin-top: 3rem;
-}
+
 
 /* Responsividade */
 @media (max-width: 768px) {

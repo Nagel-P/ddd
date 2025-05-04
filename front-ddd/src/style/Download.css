@@ -1,79 +1,133 @@
-.container {
-    display: flex;
-    height: 100vh;
-    font-family: Arial, sans-serif;
+/* Tema Escuro */
+.download-container.dark-theme {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+.download-container.dark-theme .download-main {
+  background-color: #1e1e1e;
+}
+
+.download-container.dark-theme .download-card {
+  background-color: #2d2d2d;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.download-container.dark-theme .download-card h1 {
+  color: #ffffff;
+}
+
+.download-container.dark-theme .download-card p {
+  color: #b0b0b0;
+}
+
+.download-container.dark-theme .evaluation-hint {
+  color: #b0b0b0;
+}
+
+/* Estrutura principal (mantida) */
+.download-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+}
+
+.download-main {
+  flex: 1;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* Card de download */
+.download-card {
+  background-color: white;
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 500px;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.download-card h1 {
+  color: #2c3e50;
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
+}
+
+.download-card p {
+  color: #555;
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+}
+
+/* Botões */
+.download-button {
+  padding: 12px 24px;
+  background-color: #8a2be2;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.download-button:hover {
+  background-color: #7b1fa2;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Seção de avaliação ajustada */
+.evaluation-section {
+  position: fixed;
+  bottom: 120px; /* Aumentado de 80px para 120px */
+  right: 20px;
+  text-align: center;
+  z-index: 10;
+}
+
+.evaluation-button {
+  padding: 10px 20px;
+  background-color: #1abc9c;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.evaluation-button:hover {
+  background-color: #16a085;
+  transform: translateY(-2px);
+}
+
+.evaluation-hint {
+  margin-top: 8px;
+  font-size: 0.8rem;
+  color: #555;
+  max-width: 200px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .evaluation-section {
+    position: static;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
   }
   
-  .sidebar {
-    width: 250px;
-    background-color: #2c3e50;
-    color: white;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  .download-card {
+    padding: 1.5rem;
   }
-  
-  .sidebar ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .sidebar ul li {
-    margin: 20px 0;
-    font-size: 18px;
-    cursor: pointer;
-    transition: 0.2s;
-  }
-  
-  .sidebar ul li:hover {
-    color: #1abc9c;
-  }
-  
-  .contact-info {
-    font-size: 14px;
-    color: #ccc;
-  }
-  
-  .main-content {
-    flex-grow: 1;
-    padding: 40px;
-    background-color: #ecf0f1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .product-info {
-    background-color: white;
-    padding: 30px 40px;
-    border-radius: 12px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
-  }
-  
-  .product-info h1 {
-    margin-bottom: 20px;
-    color: #2c3e50;
-  }
-  
-  .product-info p {
-    margin-bottom: 30px;
-    color: #555;
-  }
-  
-  .button {
-    background-color: #1abc9c;
-    color: white;
-    border: none;
-    padding: 12px 24px;
-    font-size: 16px;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .button:hover {
-    background-color: #16a085;
-  }
-  
+}

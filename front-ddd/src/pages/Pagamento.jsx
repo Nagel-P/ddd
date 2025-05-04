@@ -1,6 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import "../style/Pagamento.css";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+
 
 const Pagamento = () => {
   const [processando, setProcessando] = useState(false);
@@ -15,30 +18,7 @@ const Pagamento = () => {
 
   return (
     <div className="container">
-      <aside className="sidebar">
-        <ul>
-          <li onClick={() => navigate("/relogin")} style={{ cursor: "pointer" }}>
-            <span>🔑</span> Login
-          </li>
-          <li onClick={() => navigate("/produto")} style={{ cursor: "pointer" }}>
-            <span>📦</span> Catálogo
-          </li>
-          <li
-            onClick={() => {
-              localStorage.removeItem("token");
-              window.location.href = "/relogin";
-            }}
-          >
-            <span>🚪</span> Sair
-          </li>
-        </ul>
-        <div className="contact-info">
-          <p>empresaficticia@email.com</p>
-          <p>55 41 9xxxx-xxxx</p>
-          <p>Rua X, Curitiba - PR</p>
-        </div>
-      </aside>
-
+      <Header/>
       <main className="main-content">
         <div className="product-info">
           <h1>Pagamento</h1>
@@ -63,6 +43,7 @@ const Pagamento = () => {
           </button>
         </div>
       </main>
+      <Footer/>
     </div>
   );
 };

@@ -1,127 +1,69 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 import "../style/Login.css";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 const LoginPage = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
-  const [nome, setNome] = useState("");
   const [senha, setSenha] = useState("");
-  const [confirmarSenha, setConfirmarSenha] = useState("");
-  const [cpf, setCpf] = useState("");
-  const [telefone, setTelefone] = useState("");
+  const [lembrar, setLembrar] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  const token = localStorage.getItem("token");
-  let nomeUsuario = null;
-
-  if (token) {
-    try {
-      const decoded = jwtDecode(token);
-      nomeUsuario = decoded.Nome;
-    } catch (e) {
-      console.error("Token inválido ou expirado");
+  useEffect(() => {
+    const token = localStorage.getItem("token") || sessionStorage.getItem("token");
+    
+    if (token) {
+      try {
+        jwtDecode(token);
+        navigate("/produto");
+      } catch (e) {
+        localStorage.removeItem("token");
+        sessionStorage.removeItem("token");
+        console.error("Token inválido ou expirado", e);
+      }
     }
-  }
+  }, [navigate]);
 
-  const handleSubmit = async (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
 
-    if (senha !== confirmarSenha) {
-      alert("As senhas não coincidem!");
-      return;
-    }
-
-    const usuario = { nome, email, senha, cpf, telefone };
-
     try {
-      await axios.post("http://localhost:5207/api/users", usuario);
-      alert("Usuário cadastrado com sucesso!");
-
-      const loginResponse = await axios.post("http://localhost:5207/api/auth/login", {
+      const response = await axios.post("http://localhost:5207/api/auth/login", {
         email,
         senha,
       });
 
-      const { token } = loginResponse.data;
-      localStorage.setItem("token", token);
+      const { token } = response.data;
+
+      if (lembrar) {
+        localStorage.setItem("token", token);
+      } else {
+        sessionStorage.setItem("token", token);
+      }
       navigate("/produto");
-    } catch (err) {
-      console.error("Erro ao cadastrar ou logar:", err.response?.data || err.message);
-      alert("Erro ao cadastrar ou logar usuário!");
+    } catch (error) {
+      console.error("Erro no login:", error.response?.data || error.message);
+      alert("Email ou senha incorretos.");
     }
   };
 
   return (
     <div className="login-page dark-theme">
-      <header className="header">
-        <div className="header-content">
-          <div className="logo-button" onClick={() => navigate("/produto")}>
-          7Tech
-          </div>
-          <nav className="nav-menu">
-            <button className="nav-button" onClick={() => navigate("/login")}>
-              <span>📝</span> Cadastrar
-            </button>
-            <button className="nav-button" onClick={() => navigate("/relogin")}>
-              <span>🔑</span> {nomeUsuario || "Login"}
-            </button>
-            {token && (
-              <button className="nav-button" onClick={() => {
-                localStorage.removeItem("token");
-                window.location.href = "/relogin";
-              }}>
-                <span>🚪</span> Sair
-              </button>
-            )}
-          </nav>
-        </div>
-      </header>
-
+      <Header />
       <main className="login-main-container">
         <div className="login-card">
-          <h2>Criar Nova Conta</h2>
-          <form onSubmit={handleSubmit}>
+          <h2>Acesse Sua Conta</h2>
+          <form onSubmit={handleLogin}>
             <div className="form-group">
               <label>Email</label>
               <input
                 type="email"
                 value={email}
-                onChange={e => setEmail(e.target.value)}
-                required
-                className="form-input"
-              />
-            </div>
-
-            <div className="form-group">
-              <label>Nome Completo</label>
-              <input
-                type="text"
-                value={nome}
-                onChange={e => setNome(e.target.value)}
-                required
-                className="form-input"
-              />
-            </div>
-
-            <div className="form-group">
-              <label>CPF</label>
-              <input
-                type="text"
-                value={cpf}
-                onChange={e => setCpf(e.target.value)}
-                required
-                className="form-input"
-              />
-            </div>
-
-            <div className="form-group">
-              <label>Telefone</label>
-              <input
-                type="text"
-                value={telefone}
-                onChange={e => setTelefone(e.target.value)}
+                onChange={(e) => setEmail(e.target.value)}
                 required
                 className="form-input"
               />
@@ -132,33 +74,44 @@ const LoginPage = () => {
               <input
                 type="password"
                 value={senha}
-                onChange={e => setSenha(e.target.value)}
+                onChange={(e) => setSenha(e.target.value)}
                 required
                 className="form-input"
               />
             </div>
 
-            <div className="form-group">
-              <label>Confirmar Senha</label>
-              <input
-                type="password"
-                value={confirmarSenha}
-                onChange={e => setConfirmarSenha(e.target.value)}
-                required
-                className="form-input"
-              />
+            <div className="login-options">
+              <label className="remember-me">
+                <input
+                  type="checkbox"
+                  checked={lembrar}
+                  onChange={(e) => setLembrar(e.target.checked)}
+                />
+                Lembrar de mim
+              </label>
+
+              <span
+                className="forgot-password"
+                onClick={() => alert("Funcionalidade ainda não implementada.")}
+              >
+                Esqueceu a senha?
+              </span>
+            </div>
+
+            <div className="register-link">
+              Não possui uma conta?{' '}
+              <span onClick={() => navigate("/cadastro")}>
+                Cadastre-se!
+              </span>
             </div>
 
             <button type="submit" className="login-button">
-              Cadastrar
+              Entrar
             </button>
           </form>
         </div>
       </main>
-
-      <footer className="footer">
-        <p>&copy; {new Date().getFullYear()} 7Tech. Todos os direitos reservados.</p>
-      </footer>
+      <Footer/>
     </div>
   );
 };

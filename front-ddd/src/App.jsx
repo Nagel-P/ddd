@@ -4,10 +4,10 @@ import Pagamento from "./pages/Pagamento";
 import Download from "./pages/Download";
 import Login from "./pages/Login";
 import ReLogin from "./pages/ReLogin";
+import Cadastro from "./pages/Cadastro";
 import ProtectedRoute from "./ProtectedRoute";
-import Avaliacao from "./pages/Avaliacao"; //
+import Avaliacao from "./pages/Avaliacao";
 import Questoes from "./pages/Questoes";
-
 
 const App = () => {
   return (
@@ -17,10 +17,9 @@ const App = () => {
         <Route path="/produto" element={<Produto />} />
         <Route path="/login" element={<Login />} />
         <Route path="/relogin" element={<ReLogin />} />
+        <Route path="/cadastro" element={<Cadastro />} />
         <Route path="/avaliacao" element={<Avaliacao />} />
         <Route path="/questoes" element={<Questoes />} />
-
-        {/* Rota protegida para pagamento */}
 
         <Route
           path="/pagamento"
@@ -30,7 +29,14 @@ const App = () => {
             </ProtectedRoute>
           }
         />
-        <Route path="/download" element={<Download />} />
+        <Route
+          path="/download"
+          element={
+            <ProtectedRoute>
+              <Download />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </Router>
   );
