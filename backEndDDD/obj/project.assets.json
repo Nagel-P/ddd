@@ -2930,19 +2930,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\rafae\\.nuget\\packages\\": {}
+    "C:\\Users\\User\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Faculdade\\semestre4\\siteddd\\ddd\\backEndDDD\\backEndDDD.csproj",
+      "projectUniqueName": "D:\\bkp\\Documents\\Geral\\PROGRAMACAO\\React\\DDD\\ddd\\ddd\\backEndDDD\\backEndDDD.csproj",
       "projectName": "backEndDDD",
-      "projectPath": "C:\\Faculdade\\semestre4\\siteddd\\ddd\\backEndDDD\\backEndDDD.csproj",
-      "packagesPath": "C:\\Users\\rafae\\.nuget\\packages\\",
-      "outputPath": "C:\\Faculdade\\semestre4\\siteddd\\ddd\\backEndDDD\\obj\\",
+      "projectPath": "D:\\bkp\\Documents\\Geral\\PROGRAMACAO\\React\\DDD\\ddd\\ddd\\backEndDDD\\backEndDDD.csproj",
+      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+      "outputPath": "D:\\bkp\\Documents\\Geral\\PROGRAMACAO\\React\\DDD\\ddd\\ddd\\backEndDDD\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\rafae\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -3023,7 +3023,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.401/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

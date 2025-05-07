@@ -52,7 +52,7 @@ const Header = () => {
       <header className="header">
         <div className="header-content">
           <div className="logo-button" onClick={() => navigate("/produto")}>
-            7Tech
+            seventec.
           </div>
           <nav className="nav-menu">
             {!isAuthenticated ? (
