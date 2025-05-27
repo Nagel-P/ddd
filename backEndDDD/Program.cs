@@ -4,10 +4,15 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Stripe;
-using backEndDDD.Models; // ou o namespace que você estiver usando
-
+using backEndDDD.Models;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// ✅ Adicionar suporte para múltiplos arquivos de configuração
+builder.Configuration
+    .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+    .AddJsonFile($"appsettings.{builder.Environment.EnvironmentName}.json", optional: true, reloadOnChange: true)
+    .AddEnvironmentVariables();
 
 // Add services to the container.
 builder.Services.AddControllers();
@@ -19,7 +24,6 @@ builder.Services.Configure<StripeSettings>(
     builder.Configuration.GetSection("Stripe")
 );
 StripeConfiguration.ApiKey = builder.Configuration["Stripe:SecretKey"];
-
 
 // 🌐 CORS
 builder.Services.AddCors(options =>
