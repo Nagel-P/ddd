@@ -3,6 +3,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Stripe;
+using backEndDDD.Models; // ou o namespace que você estiver usando
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +13,13 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+// Stripe para pagamento
+builder.Services.Configure<StripeSettings>(
+    builder.Configuration.GetSection("Stripe")
+);
+StripeConfiguration.ApiKey = builder.Configuration["Stripe:SecretKey"];
+
 
 // 🌐 CORS
 builder.Services.AddCors(options =>

@@ -3,18 +3,24 @@ import { useState } from "react";
 import "../style/Pagamento.css";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import axios from 'axios';
 
 
 const Pagamento = () => {
   const [processando, setProcessando] = useState(false);
   const navigate = useNavigate();
 
-  const simularPagamento = () => {
-    setProcessando(true);
-    setTimeout(() => {
-      navigate("/download");
-    }, 2000);
-  };
+const simularPagamento = async () => {
+  setProcessando(true);
+  try {
+    const response = await axios.post("http://localhost:5207/pagamento/create-checkout-session");
+    window.location.href = response.data.url; // Redireciona pro Stripe
+  } catch (error) {
+    console.error("Erro ao criar checkout:", error);
+    setProcessando(false);
+  }
+};
+
 
   return (
     <div className="container">

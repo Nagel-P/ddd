@@ -19,6 +19,7 @@
     </PackageReference>
     <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="8.8.0" />
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="8.0.3" />
+    <PackageReference Include="Stripe.net" Version="48.1.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
