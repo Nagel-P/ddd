@@ -1,11 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "HD5D5vu+6NI=",
+  "dgSpecHash": "gXqounHC5rw=",
   "success": true,
   "projectFilePath": "C:\\college-projects-sw\\ddd\\backEndDDD\\backEndDDD.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Igor\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
-    "C:\\Users\\Igor\\.nuget\\packages\\mercadopago-sdk\\2.5.0\\mercadopago-sdk.2.5.0.nupkg.sha512",
     "C:\\Users\\Igor\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\8.0.0\\microsoft.aspnetcore.authentication.jwtbearer.8.0.0.nupkg.sha512",
     "C:\\Users\\Igor\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\6.0.0\\microsoft.bcl.asyncinterfaces.6.0.0.nupkg.sha512",
     "C:\\Users\\Igor\\.nuget\\packages\\microsoft.bcl.memory\\9.0.0\\microsoft.bcl.memory.9.0.0.nupkg.sha512",

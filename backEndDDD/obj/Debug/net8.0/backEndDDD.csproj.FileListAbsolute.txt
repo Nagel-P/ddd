@@ -358,7 +358,6 @@ C:\college-projects-sw\ddd\backEndDDD\obj\Debug\net8.0\refint\backEndDDD.dll
 C:\college-projects-sw\ddd\backEndDDD\obj\Debug\net8.0\backEndDDD.pdb
 C:\college-projects-sw\ddd\backEndDDD\obj\Debug\net8.0\backEndDDD.genruntimeconfig.cache
 C:\college-projects-sw\ddd\backEndDDD\obj\Debug\net8.0\ref\backEndDDD.dll
-C:\college-projects-sw\ddd\backEndDDD\bin\Debug\net8.0\MercadoPago.dll
 C:\college-projects-sw\ddd\backEndDDD\bin\Debug\net8.0\Newtonsoft.Json.dll
 C:\college-projects-sw\ddd\backEndDDD\bin\Debug\net8.0\Stripe.net.dll
 C:\college-projects-sw\ddd\backEndDDD\bin\Debug\net8.0\System.Configuration.ConfigurationManager.dll

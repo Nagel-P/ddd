@@ -15,8 +15,7 @@
           "Microsoft.IdentityModel.Tokens": "8.8.0",
           "Pomelo.EntityFrameworkCore.MySql": "8.0.3",
           "Stripe.net": "48.1.0",
-          "Swashbuckle.AspNetCore": "6.4.0",
-          "mercadopago-sdk": "2.5.0"
+          "Swashbuckle.AspNetCore": "6.4.0"
         },
         "runtime": {
           "backEndDDD.dll": {}
@@ -27,18 +26,6 @@
           "lib/net6.0/Humanizer.dll": {
             "assemblyVersion": "2.14.0.0",
             "fileVersion": "2.14.1.48190"
-          }
-        }
-      },
-      "mercadopago-sdk/2.5.0": {
-        "dependencies": {
-          "Newtonsoft.Json": "13.0.3",
-          "System.Configuration.ConfigurationManager": "8.0.0"
-        },
-        "runtime": {
-          "lib/net6.0/MercadoPago.dll": {
-            "assemblyVersion": "2.5.0.0",
-            "fileVersion": "2.5.0.0"
           }
         }
       },
@@ -735,13 +722,6 @@
       "sha512": "sha512-lQKvtaTDOXnoVJ20ibTuSIOf2i0uO0MPbDhd1jm238I+U/2ZnRENj0cktKZhtchBMtCUSRQ5v4xBCUbKNmyVMw==",
       "path": "humanizer.core/2.14.1",
       "hashPath": "humanizer.core.2.14.1.nupkg.sha512"
-    },
-    "mercadopago-sdk/2.5.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-ZoVQfkIAKJSAFf9Fl9e+XRsx839RZKH1EgBctATSG2euoSf5f1/HLeiJNYKRh1/KO7+XtJWm+Zt27PqUmoTQFA==",
-      "path": "mercadopago-sdk/2.5.0",
-      "hashPath": "mercadopago-sdk.2.5.0.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Authentication.JwtBearer/8.0.0": {
       "type": "package",
