@@ -6,6 +6,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import BenefitCards from "../components/BenefitCards"; 
 import ProductCard from "../components/ProductCard";
+import PaymentCard from "../components/PaymentCard";
 
 const Produto = () => {
   const navigate = useNavigate();
@@ -36,6 +37,7 @@ const Produto = () => {
         </section>
         <ProductCard />
         <BenefitCards />
+        <PaymentCard />
       </main>
       <Footer />
     </div>

@@ -1,104 +1,208 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import { useNavigate, useParams } from "react-router-dom";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import "../style/Questoes.css";
+import CertificadoPDF from "../assets/Certificado.pdf";
 
-
-export default function Questoes() {
-  const { cursoId } = useParams();
+const Questoes = () => {
   const navigate = useNavigate();
-  const [perguntas, setPerguntas] = useState([]);
-  const [respostas, setRespostas] = useState({});
-  const [carregando, setCarregando] = useState(true);
+  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [answers, setAnswers] = useState(Array(10).fill(null));
 
-  const usuarioId = localStorage.getItem("usuarioId");
-
-  useEffect(() => {
-    async function verificarECarregar() {
-      try {
-        const avaliacoes = await axios.get(`http://localhost:5207/api/avaliacao/usuario/${usuarioId}/curso/${cursoId}`);
-        
-        if (avaliacoes.data.jaFez) {
-          alert("Você já realizou esta avaliação.");
-          navigate("/dashboard");
-          return;
-        }
-
-        const res = await axios.get(`http://localhost:5207/api/avaliacao/perguntas/curso/${cursoId}`);
-        setPerguntas(res.data);
-        setCarregando(false);
-      } catch (err) {
-        console.error(err);
-        alert("Erro ao carregar avaliação.");
+  // Perguntas de exemplo
+  const questions = [
+    {
+      question: "Qual é o principal objetivo do DDD?",
+      options: {
+        A: "Criar interfaces bonitas",
+        B: "Alinhar software com o domínio de negócio",
+        C: "Otimizar performance de queries",
+        D: "Reduzir custos de infraestrutura"
+      }
+    },
+    {
+      question: "O que é um Aggregate Root no DDD?",
+      options: {
+        A: "Um framework para frontend",
+        B: "Uma entidade que agrega outras e controla acesso",
+        C: "Um padrão de design de banco de dados",
+        D: "Um tipo de teste unitário"
+      }
+    },
+    // Adicione mais 8 perguntas seguindo o mesmo formato
+    {
+      question: "Qual destes NÃO é um building block do DDD?",
+      options: {
+        A: "Value Object",
+        B: "Entity",
+        C: "Repository",
+        D: "Singleton"
+      }
+    },
+    {
+      question: "O que é Ubiquitous Language no DDD?",
+      options: {
+        A: "Linguagem de programação universal",
+        B: "Linguagem comum entre desenvolvedores e especialistas de domínio",
+        C: "Framework para internacionalização",
+        D: "Padrão de documentação"
+      }
+    },
+    {
+      question: "Qual a diferença entre Entidade e Value Object?",
+      options: {
+        A: "Entidades têm identidade, Value Objects não",
+        B: "Value Objects são imutáveis, Entidades não",
+        C: "Ambos são iguais no DDD",
+        D: "As opções A e B estão corretas"
+      }
+    },
+    {
+      question: "Para que serve um Service no DDD?",
+      options: {
+        A: "Lógica que não pertence a nenhuma entidade ou value object",
+        B: "Comunicação com bancos de dados",
+        C: "Criação de interfaces gráficas",
+        D: "Gerenciamento de transações"
+      }
+    },
+    {
+      question: "O que é Bounded Context?",
+      options: {
+        A: "Limite de um domínio específico com linguagem própria",
+        B: "Contexto de execução do servidor",
+        C: "Limite de memória para uma aplicação",
+        D: "Contexto de segurança"
+      }
+    },
+    {
+      question: "Qual a função de um Repository?",
+      options: {
+        A: "Fornecer interface para persistência de aggregates",
+        B: "Gerenciar transações de banco de dados",
+        C: "Criar relatórios",
+        D: "Implementar regras de negócio"
+      }
+    },
+    {
+      question: "O que é Anti-Corruption Layer?",
+      options: {
+        A: "Padrão para isolar sistemas legados",
+        B: "Camada de segurança contra hackers",
+        C: "Mecanismo de cache",
+        D: "Técnica de otimização de queries"
+      }
+    },
+    {
+      question: "Qual a importância do Event Storming no DDD?",
+      options: {
+        A: "Mapear eventos de domínio com especialistas",
+        B: "Otimizar performance",
+        C: "Criar documentação técnica",
+        D: "Implementar testes automatizados"
       }
     }
+  ];
 
-    verificarECarregar();
-  }, [cursoId, navigate, usuarioId]);
+  const handleOptionSelect = (option) => {
+    const newAnswers = [...answers];
+    newAnswers[currentQuestion] = option;
+    setAnswers(newAnswers);
+  };
 
-  function selecionarResposta(perguntaId, resposta) {
-    setRespostas(prev => ({
-      ...prev,
-      [perguntaId]: resposta
-    }));
-  }
-
-  async function enviarRespostas() {
-    const respostasFormatadas = Object.keys(respostas).map(perguntaId => ({
-      perguntaId: Number(perguntaId),
-      respostaDada: respostas[perguntaId]
-    }));
-
-    try {
-      const response = await axios.post(`http://localhost:5207/api/avaliacao/enviar-respostas`, {
-        usuarioId: Number(usuarioId),
-        cursoId: Number(cursoId),
-        respostas: respostasFormatadas
-      });
-
-      alert(response.data.mensagem);
-      navigate("/dashboard");
-    } catch (error) {
-      console.error(error);
-      alert("Erro ao enviar avaliação.");
+  const handleNextQuestion = () => {
+    if (currentQuestion < questions.length - 1) {
+      setCurrentQuestion(currentQuestion + 1);
     }
-  }
+  };
 
-  if (carregando) {
-    return <div>Carregando avaliação...</div>;
-  }
+  const handlePrevQuestion = () => {
+    if (currentQuestion > 0) {
+      setCurrentQuestion(currentQuestion - 1);
+    }
+  };
+
+  const handleSubmit = () => {
+    // Lógica para enviar respostas (substitua pela sua chamada API quando necessário)
+    console.log("Respostas enviadas:", answers);
+    
+    // Força o download do certificado
+    const link = document.createElement('a');
+    link.href = CertificadoPDF;
+    link.download = 'Certificado_DDD.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    
+    // Redireciona após o download
+    navigate("/produto"); // Ou para onde você quiser
+  };
 
   return (
-    <div className="p-6">
-      <h1 className="text-2xl font-bold mb-6">Avaliação</h1>
-      {perguntas.map((pergunta, index) => (
-        <div key={pergunta.id} className="mb-8">
-          <h2 className="text-xl mb-2">{index + 1}. {pergunta.enunciado}</h2>
-          <div className="space-y-2">
-            {pergunta.alternativas.map((alternativa, idx) => (
-              <div key={idx}>
-                <label className="flex items-center">
-                  <input
-                    type="radio"
-                    name={`pergunta-${pergunta.id}`}
-                    value={alternativa}
-                    checked={respostas[pergunta.id] === alternativa}
-                    onChange={() => selecionarResposta(pergunta.id, alternativa)}
-                    className="mr-2"
-                  />
-                  {alternativa}
-                </label>
-              </div>
-            ))}
+    <div className="questoes-container dark-theme">
+      <Header />
+      <main className="questoes-main">
+        <div className="questoes-card">
+          <div className="progress-container">
+            <div 
+              className="progress-bar"
+              style={{ width: `${((currentQuestion + 1) / questions.length) * 100}%` }}
+            ></div>
+          </div>
+          
+          <h1>Questionário DDD</h1>
+          <p className="question-counter">Pergunta {currentQuestion + 1} de {questions.length}</p>
+          
+          <div className="question-content">
+            <h2>{questions[currentQuestion].question}</h2>
+            
+            <div className="options-container">
+              {Object.entries(questions[currentQuestion].options).map(([key, value]) => (
+                <div 
+                  key={key}
+                  className={`option ${answers[currentQuestion] === key ? 'selected' : ''}`}
+                  onClick={() => handleOptionSelect(key)}
+                >
+                  <span className="option-letter">{key}</span>
+                  <span className="option-text">{value}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+          
+          <div className="navigation-buttons">
+            <button 
+              onClick={handlePrevQuestion}
+              disabled={currentQuestion === 0}
+              className="nav-button prev-button"
+            >
+              Anterior
+            </button>
+            
+            {currentQuestion < questions.length - 1 ? (
+              <button 
+                onClick={handleNextQuestion}
+                disabled={answers[currentQuestion] === null}
+                className="nav-button next-button"
+              >
+                Próxima
+              </button>
+            ) : (
+              <button 
+                onClick={handleSubmit}
+                disabled={answers[currentQuestion] === null}
+                className="nav-button submit-button"
+              >
+                Finalizar e Emitir Certificado
+              </button>
+            )}
           </div>
         </div>
-      ))}
-
-      <button
-        onClick={enviarRespostas}
-        className="bg-blue-600 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded"
-      >
-        Enviar Avaliação
-      </button>
+      </main>
+      <Footer />
     </div>
   );
-}
+};
+
+export default Questoes;

@@ -1,0 +1,120 @@
+/* Estilo base - mantendo o tema escuro */
+.avaliacao-container.dark-theme {
+    background-color: #121212;
+    color: #e0e0e0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .avaliacao-main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 1rem;
+  }
+  
+  .avaliacao-card {
+    background-color: #1e1e1e;
+    border-radius: 16px;
+    box-shadow: 0 30px 30px -25px rgba(138, 43, 226, 0.3);
+    padding: 2rem;
+    max-width: 800px;
+    width: 100%;
+    border: 1px solid #333;
+  }
+  
+  .avaliacao-content h1 {
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+  }
+  
+  .avaliacao-content h2 {
+    color: #ffffff;
+    font-size: 1.3rem;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+  
+  .rules-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+  
+  .rule-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  
+  .rule-icon {
+    background-color: #8a2be2;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  
+  .rule-icon svg {
+    width: 16px;
+    height: 16px;
+  }
+  
+  .rule-item p {
+    flex: 1;
+    color: #b0b0b0;
+    line-height: 1.6;
+  }
+  
+  .action-button {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .start-button {
+    background: linear-gradient(135deg, #8a2be2, #ff1493);
+    border-radius: 6px;
+    color: #fff;
+    font-weight: 500;
+    font-size: 1rem;
+    text-align: center;
+    border: none;
+    outline: none;
+    padding: 0.8rem 2rem;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  
+  .start-button:hover {
+    background: linear-gradient(135deg, #7b1fa2, #e91e63);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(138, 43, 226, 0.3);
+  }
+  
+  @media (max-width: 768px) {
+    .avaliacao-card {
+      padding: 1.5rem;
+    }
+    
+    .avaliacao-content h1 {
+      font-size: 1.5rem;
+    }
+    
+    .avaliacao-content h2 {
+      font-size: 1.1rem;
+    }
+    
+    .rule-item {
+      gap: 0.8rem;
+    }
+  }

@@ -1,30 +1,60 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
+import axios from "axios";
 import pdfimg from "../assets/pdf.png";
 import './ProductCard.css';
 
 const ProductCard = () => {
   const navigate = useNavigate();
 
-  // Função para verificar autenticação
-  const isAuthenticated = () => {
+  const getUserStatus = () => {
     const token = localStorage.getItem("token") || sessionStorage.getItem("token");
-    if (!token) return false;
+    
+    if (!token) return 'unauthenticated';
     
     try {
-      jwtDecode(token);
-      return true;
+      const decoded = jwtDecode(token);
+      return decoded.hasPayment ? 'paid' : 'authenticated';
     } catch (e) {
-      return false;
+      return 'unauthenticated';
     }
   };
 
-  const handleAction = () => {
-    if (isAuthenticated()) {
-      navigate("/download");
-    } else {
-      navigate("/pagamento");
+  const handleAction = async () => {
+    const status = getUserStatus();
+
+    switch(status) {
+      case 'unauthenticated':
+        navigate("/login");
+        break;
+      case 'authenticated':
+        try {
+          const response = await axios.post("http://localhost:5207/pagamento/create-checkout-session");
+          window.location.href = response.data.url;
+        } catch (error) {
+          console.error("Erro ao criar checkout:", error);
+        }
+        break;
+      case 'paid':
+        navigate("/download");
+        break;
+      default:
+        navigate("/login");
+    }
+  };
+
+  const getButtonText = () => {
+    const status = getUserStatus();
+    
+    switch(status) {
+      case 'unauthenticated':
+      case 'authenticated':
+        return "Comprar Agora";
+      case 'paid':
+        return "Fazer Download";
+      default:
+        return "Comprar Agora";
     }
   };
 
@@ -32,7 +62,7 @@ const ProductCard = () => {
     <div className="product-display">
       <div className="plan">
         <div className="inner">
-          {!isAuthenticated() && (
+          {getUserStatus() !== 'paid' && (
             <span className="pricing">
               <span>R$ 120</span>
             </span>
@@ -64,7 +94,7 @@ const ProductCard = () => {
           
           <div className="action">
             <button className="button" onClick={handleAction}>
-              {isAuthenticated() ? "Faça o Download" : "Comprar agora"}
+              {getButtonText()}
             </button>
           </div>
         </div>

@@ -5,6 +5,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import "../style/Download.css";
 import DDDescomplicaPDF from "../assets/DDDescomplica.pdf"; // Importe o arquivo PDF
+import PaymentCard from "../components/PaymentCard";
 
 const Download = () => {
   const navigate = useNavigate();
@@ -45,16 +46,7 @@ const Download = () => {
             <button className="download-button">Baixar Arquivo</button>
           </a>
         </div>
-        
-        <div className="evaluation-section">
-          <button 
-            onClick={handleStartEvaluation}
-            className="evaluation-button"
-          >
-            Começar avaliação
-          </button>
-          <p className="evaluation-hint">Faça a avaliação para gerar seu certificado online</p>
-        </div>
+        <PaymentCard />
       </main>
       <Footer />
     </div>

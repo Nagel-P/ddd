@@ -1,74 +1,80 @@
-import { useEffect } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import "../style/Avaliacao.css";
 
 const Avaliacao = () => {
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (!token) {
-      navigate("/login");
-    }
-  }, [navigate]);
+  const iniciarAvaliacao = () => {
+    navigate("/questoes"); // Navega diretamente para o componente Questoes.jsx mockado
+  };
 
   return (
-    <div className="container">
-      <aside className="sidebar">
-        <ul>
-          <li onClick={() => navigate("/login")} style={{ cursor: "pointer" }}>
-            <span>🔑</span> Login
-          </li>
-          <li onClick={() => navigate("/produto")} style={{ cursor: "pointer" }}>
-            <span>📦</span> Catálogo
-          </li>
-          <li onClick={() => navigate("/download")} style={{ cursor: "pointer" }}>
-            <span>⬅️</span> Voltar ao Download
-          </li>
-          <li
-            onClick={() => {
-              localStorage.removeItem("token");
-              window.location.href = "/login";
-            }}
-          >
-            <span>🚪</span> Sair
-          </li>
-        </ul>
-        <div className="contact-info">
-          <p>empresaficticia@email.com</p>
-          <p>55 41 9xxxx-xxxx</p>
-          <p>Rua X, Curitiba - PR</p>
-        </div>
-      </aside>
-
-      <main className="main-content">
-              <div className="product-descricao">
-                <h1>Avaliação de Conhecimentos</h1>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio velit id veniam enim
-                  quam, modi quia corporis. Sequi consectetur corporis nesciunt aperiam doloremque
-                  obcaecati, explicabo cumque nam, ratione, laudantium impedit. Lorem ipsum dolor sit amet
-                  consectetur, adipisicing elit. Nobis ut deserunt minima animi accusamus tempora nesciunt
-                  reprehenderit quod, voluptas dolores fugit sunt provident quam eum? Perspiciatis
-                  voluptate tenetur quia. Dignissimos. Lorem, ipsum dolor sit amet consectetur adipisicing
-                  elit. Perferendis nulla quas, quae corrupti beatae expedita iste? Alias omnis molestias
-                  et autem, doloremque expedita, odio a nobis dolorem fugiat vitae porro.
-                </p>
+    <div className="avaliacao-container dark-theme">
+      <Header />
+      <main className="avaliacao-main">
+        <div className="avaliacao-card">
+          <h1>Avaliação DDD</h1>
+          
+          <div className="avaliacao-content">
+            <h2>Preparação para a Prova</h2>
+            
+            <div className="rules-list">
+              <div className="rule-item">
+                <div className="rule-icon">
+                  <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 0h24v24H0z" fill="none"></path>
+                    <path fill="currentColor" d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z"></path>
+                  </svg>
+                </div>
+                <p><strong>Baseado no PDF:</strong> Todas as questões referem-se ao material do curso DDDescomplica</p>
               </div>
-      
-              <div className="product-info">
-          <h1>Avaliação On-line</h1>
-          <p>
-            Clique no botão para acessar o formulário da avaliação
-            e realizar um exame com direito a certificado on-line!!
-          </p>
-          <button
-            className="button"
-            onClick={() => navigate("/questoes")} style={{ cursor: "pointer" }}
-          >
-            📝 Realizar Avaliação
-          </button>
+              
+              <div className="rule-item">
+                <div className="rule-icon">
+                  <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 0h24v24H0z" fill="none"></path>
+                    <path fill="currentColor" d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z"></path>
+                  </svg>
+                </div>
+                <p><strong>Formato:</strong> 10 questões objetivas (A a D) sobre conceitos-chave do DDD</p>
+              </div>
+              
+              <div className="rule-item">
+                <div className="rule-icon">
+                  <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 0h24v24H0z" fill="none"></path>
+                    <path fill="currentColor" d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z"></path>
+                  </svg>
+                </div>
+                <p><strong>Aprovação:</strong> Acerto mínimo de 70% para emissão do certificado</p>
+              </div>
+              
+              <div className="rule-item">
+                <div className="rule-icon">
+                  <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 0h24v24H0z" fill="none"></path>
+                    <path fill="currentColor" d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z"></path>
+                  </svg>
+                </div>
+                <p><strong>Navegação:</strong> Use os botões "Anterior" e "Próxima" para percorrer as questões</p>
+              </div>
+            </div>
+            
+            <div className="action-button">
+              <button 
+                onClick={iniciarAvaliacao}
+                className="start-button"
+              >
+                Começar Avaliação Agora
+              </button>
+            </div>
+          </div>
         </div>
-            </main>
+      </main>
+      <Footer />
     </div>
   );
 };
