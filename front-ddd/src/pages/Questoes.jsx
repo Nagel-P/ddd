@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import "../style/Questoes.css";
-import CertificadoPDF from "../assets/Certificado.pdf";
 
 const Questoes = () => {
   const navigate = useNavigate();

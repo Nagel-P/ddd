@@ -4,7 +4,6 @@ import { jwtDecode } from "jwt-decode";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import "../style/Download.css";
-import DDDescomplicaPDF from "../assets/DDDescomplica.pdf"; // Importe o arquivo PDF
 import PaymentCard from "../components/PaymentCard";
 
 const Download = () => {
@@ -26,10 +25,6 @@ const Download = () => {
       navigate("/login");
     }
   }, [navigate]);
-
-  const handleStartEvaluation = () => {
-    navigate("/avaliacao");
-  };
 
   return (
     <div className="download-container dark-theme">
