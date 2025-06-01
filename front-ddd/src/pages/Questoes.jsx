@@ -10,7 +10,6 @@ const Questoes = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState(Array(10).fill(null));
 
-  // Perguntas de exemplo
   const questions = [
     {
       question: "Qual é o principal objetivo do DDD?",
@@ -19,7 +18,8 @@ const Questoes = () => {
         B: "Alinhar software com o domínio de negócio",
         C: "Otimizar performance de queries",
         D: "Reduzir custos de infraestrutura"
-      }
+      },
+      correctAnswer: "B"
     },
     {
       question: "O que é um Aggregate Root no DDD?",
@@ -28,9 +28,9 @@ const Questoes = () => {
         B: "Uma entidade que agrega outras e controla acesso",
         C: "Um padrão de design de banco de dados",
         D: "Um tipo de teste unitário"
-      }
+      },
+      correctAnswer: "B"
     },
-    // Adicione mais 8 perguntas seguindo o mesmo formato
     {
       question: "Qual destes NÃO é um building block do DDD?",
       options: {
@@ -38,7 +38,8 @@ const Questoes = () => {
         B: "Entity",
         C: "Repository",
         D: "Singleton"
-      }
+      },
+      correctAnswer: "D"
     },
     {
       question: "O que é Ubiquitous Language no DDD?",
@@ -47,7 +48,8 @@ const Questoes = () => {
         B: "Linguagem comum entre desenvolvedores e especialistas de domínio",
         C: "Framework para internacionalização",
         D: "Padrão de documentação"
-      }
+      },
+      correctAnswer: "B"
     },
     {
       question: "Qual a diferença entre Entidade e Value Object?",
@@ -56,7 +58,8 @@ const Questoes = () => {
         B: "Value Objects são imutáveis, Entidades não",
         C: "Ambos são iguais no DDD",
         D: "As opções A e B estão corretas"
-      }
+      },
+      correctAnswer: "D"
     },
     {
       question: "Para que serve um Service no DDD?",
@@ -65,7 +68,8 @@ const Questoes = () => {
         B: "Comunicação com bancos de dados",
         C: "Criação de interfaces gráficas",
         D: "Gerenciamento de transações"
-      }
+      },
+      correctAnswer: "A"
     },
     {
       question: "O que é Bounded Context?",
@@ -74,7 +78,8 @@ const Questoes = () => {
         B: "Contexto de execução do servidor",
         C: "Limite de memória para uma aplicação",
         D: "Contexto de segurança"
-      }
+      },
+      correctAnswer: "A"
     },
     {
       question: "Qual a função de um Repository?",
@@ -83,7 +88,8 @@ const Questoes = () => {
         B: "Gerenciar transações de banco de dados",
         C: "Criar relatórios",
         D: "Implementar regras de negócio"
-      }
+      },
+      correctAnswer: "A"
     },
     {
       question: "O que é Anti-Corruption Layer?",
@@ -92,7 +98,8 @@ const Questoes = () => {
         B: "Camada de segurança contra hackers",
         C: "Mecanismo de cache",
         D: "Técnica de otimização de queries"
-      }
+      },
+      correctAnswer: "A"
     },
     {
       question: "Qual a importância do Event Storming no DDD?",
@@ -101,11 +108,12 @@ const Questoes = () => {
         B: "Otimizar performance",
         C: "Criar documentação técnica",
         D: "Implementar testes automatizados"
-      }
+      },
+      correctAnswer: "A"
     }
   ];
 
-  const handleOptionSelect = (option) => {
+ const handleOptionSelect = (option) => {
     const newAnswers = [...answers];
     newAnswers[currentQuestion] = option;
     setAnswers(newAnswers);
@@ -124,19 +132,23 @@ const Questoes = () => {
   };
 
   const handleSubmit = () => {
-    // Lógica para enviar respostas (substitua pela sua chamada API quando necessário)
-    console.log("Respostas enviadas:", answers);
-    
-    // Força o download do certificado
-    const link = document.createElement('a');
-    link.href = CertificadoPDF;
-    link.download = 'Certificado_DDD.pdf';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    
-    // Redireciona após o download
-    navigate("/produto"); // Ou para onde você quiser
+    let correctCount = 0;
+    answers.forEach((answer, index) => {
+      if (answer === questions[index].correctAnswer) {
+        correctCount++;
+      }
+    });
+
+    const score = (correctCount / questions.length) * 100;
+    const aprovado = score >= 70;
+
+    navigate("/resultado", {
+      state: {
+        nota: score,
+        acertos: correctCount,
+        aprovado: aprovado
+      }
+    });
   };
 
   return (
@@ -145,56 +157,39 @@ const Questoes = () => {
       <main className="questoes-main">
         <div className="questoes-card">
           <div className="progress-container">
-            <div 
-              className="progress-bar"
-              style={{ width: `${((currentQuestion + 1) / questions.length) * 100}%` }}
-            ></div>
+            <div className="progress-bar" style={{ width: `${((currentQuestion + 1) / questions.length) * 100}%` }}></div>
           </div>
-          
+
           <h1>Questionário DDD</h1>
-          <p className="question-counter">Pergunta {currentQuestion + 1} de {questions.length}</p>
-          
+          <p className="question-counter">
+            Pergunta {currentQuestion + 1} de {questions.length}
+          </p>
+
           <div className="question-content">
             <h2>{questions[currentQuestion].question}</h2>
-            
+
             <div className="options-container">
               {Object.entries(questions[currentQuestion].options).map(([key, value]) => (
-                <div 
-                  key={key}
-                  className={`option ${answers[currentQuestion] === key ? 'selected' : ''}`}
-                  onClick={() => handleOptionSelect(key)}
-                >
+                <div key={key} className={`option ${answers[currentQuestion] === key ? 'selected' : ''}`} onClick={() => handleOptionSelect(key)}>
                   <span className="option-letter">{key}</span>
                   <span className="option-text">{value}</span>
                 </div>
               ))}
             </div>
           </div>
-          
+
           <div className="navigation-buttons">
-            <button 
-              onClick={handlePrevQuestion}
-              disabled={currentQuestion === 0}
-              className="nav-button prev-button"
-            >
+            <button onClick={handlePrevQuestion} disabled={currentQuestion === 0} className="nav-button prev-button">
               Anterior
             </button>
-            
+
             {currentQuestion < questions.length - 1 ? (
-              <button 
-                onClick={handleNextQuestion}
-                disabled={answers[currentQuestion] === null}
-                className="nav-button next-button"
-              >
+              <button onClick={handleNextQuestion} disabled={answers[currentQuestion] === null} className="nav-button next-button">
                 Próxima
               </button>
             ) : (
-              <button 
-                onClick={handleSubmit}
-                disabled={answers[currentQuestion] === null}
-                className="nav-button submit-button"
-              >
-                Finalizar e Emitir Certificado
+              <button onClick={handleSubmit} disabled={answers[currentQuestion] === null} className="nav-button submit-button">
+                Finalizar e Ver resultado
               </button>
             )}
           </div>

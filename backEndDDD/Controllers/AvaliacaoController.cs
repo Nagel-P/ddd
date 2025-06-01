@@ -1,116 +1,47 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+// Controllers/ProvaController.cs
 using Microsoft.AspNetCore.Mvc;
-using backEndDDD.Data;
 using backEndDDD.Models;
-using Microsoft.EntityFrameworkCore;
-using backEndDDD.Controllers.DTOs;
 
 namespace backEndDDD.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
-    public class AvaliacaoController : ControllerBase
+    [Route("[controller]")]
+    public class ProvaController : ControllerBase
     {
-        private readonly AppDbContext _context;
-
-        public AvaliacaoController(AppDbContext context)
+        // Gabarito correto
+        private readonly List<string> gabarito = new List<string>
         {
-            _context = context;
-        }
+            "B", "B", "D", "B", "D", "A", "A", "A", "A", "A"
+        };
 
-        // GET: api/avaliacao/perguntas/curso/1
-        [HttpGet("perguntas/curso/{cursoId}")]
-        public async Task<ActionResult<IEnumerable<Pergunta>>> GetPerguntasPorCurso(int cursoId)
+        [HttpPost("corrigir")]
+        public IActionResult CorrigirProva([FromBody] ProvaModel prova)
         {
-            var perguntas = await _context.Perguntas
-                .Where(p => p.CursoId == cursoId)
-                .ToListAsync();
-
-            if (perguntas == null || !perguntas.Any())
+            if (prova?.Respostas == null || prova.Respostas.Count != gabarito.Count)
             {
-                return NotFound("Nenhuma pergunta cadastrada para esse curso.");
+                return BadRequest("Número de respostas inválido.");
             }
 
-            return Ok(perguntas);
-        }
-
-        // GET: api/avaliacao/usuario/1/curso/2
-        [HttpGet("usuario/{usuarioId}/curso/{cursoId}")]
-        public async Task<IActionResult> VerificarSeFezAvaliacao(int usuarioId, int cursoId)
-        {
-            var existe = await _context.Avaliacoes
-                .AnyAsync(a => a.UsuarioId == usuarioId && a.CursoId == cursoId);
-
-            return Ok(new { jaFez = existe });
-        }
-
-        [HttpPost("enviar-respostas")]
-        public async Task<IActionResult> EnviarRespostas([FromBody] RespostaAvaliacaoDTO dados)
-        {
-            // Verifica se o usuário já respondeu a avaliação
-            bool jaFez = await _context.Avaliacoes
-                .AnyAsync(a => a.UsuarioId == dados.UsuarioId && a.CursoId == dados.CursoId);
-
-            if (jaFez)
-            {
-                return BadRequest(new { Mensagem = "Você já realizou esta avaliação." });
-            }
-
-            var perguntas = await _context.Perguntas
-                .Where(p => p.CursoId == dados.CursoId)
-                .ToListAsync();
-
-            int total = perguntas.Count;
             int acertos = 0;
 
-            var avaliacao = new Avaliacao
+            for (int i = 0; i < gabarito.Count; i++)
             {
-                UsuarioId = dados.UsuarioId,
-                CursoId = dados.CursoId,
-                DataConclusao = DateTime.Now,
-                Nota = 0, // calculado depois
-                Aprovado = false
-            };
-
-            _context.Avaliacoes.Add(avaliacao);
-            await _context.SaveChangesAsync(); // gerar ID
-
-            foreach (var resposta in dados.Respostas)
-            {
-                var pergunta = perguntas.FirstOrDefault(p => p.Id == resposta.PerguntaId);
-
-                bool correta = pergunta != null &&
-                               resposta.RespostaDada.Trim().ToLower() == 
-                               pergunta.RespostaCorreta.Trim().ToLower();
-
-                if (correta) acertos++;
-
-                var respostaUsuario = new RespostaUsuario
+                if (prova.Respostas[i] == gabarito[i])
                 {
-                    AvaliacaoId = avaliacao.Id,
-                    PerguntaId = resposta.PerguntaId,
-                    RespostaDada = resposta.RespostaDada,
-                    Correta = correta
-                };
-
-                _context.RespostasUsuario.Add(respostaUsuario);
+                    acertos++;
+                }
             }
 
-            decimal notaFinal = ((decimal)acertos / total) * 10;
-            avaliacao.Nota = notaFinal;
-            avaliacao.Aprovado = notaFinal >= 7;
+            double nota = (acertos / (double)gabarito.Count) * 10;
 
-            await _context.SaveChangesAsync();
+            bool aprovado = nota >= 7;
 
             return Ok(new
             {
-                Mensagem = avaliacao.Aprovado ? "Parabéns! Você foi aprovado!" : "Você não atingiu a nota mínima.",
-                Nota = avaliacao.Nota,
-                Aprovado = avaliacao.Aprovado
+                acertos,
+                nota,
+                aprovado
             });
-        } 
-    } 
+        }
+    }
 }

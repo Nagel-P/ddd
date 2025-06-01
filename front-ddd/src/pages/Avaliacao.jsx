@@ -8,7 +8,7 @@ const Avaliacao = () => {
   const navigate = useNavigate();
 
   const iniciarAvaliacao = () => {
-    navigate("/questoes"); // Navega diretamente para o componente Questoes.jsx mockado
+    navigate("/questoes");
   };
 
   return (
@@ -24,37 +24,37 @@ const Avaliacao = () => {
             <div className="rules-list">
               <div className="rule-item">
                 <div className="rule-icon">
-                  <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <svg height="24" width="24" viewBox="0 0 24 24">
                     <path d="M0 0h24v24H0z" fill="none"></path>
                     <path fill="currentColor" d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z"></path>
                   </svg>
                 </div>
                 <p><strong>Baseado no PDF:</strong> Todas as questões referem-se ao material do curso DDDescomplica</p>
               </div>
-              
+
               <div className="rule-item">
                 <div className="rule-icon">
-                  <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <svg height="24" width="24" viewBox="0 0 24 24">
                     <path d="M0 0h24v24H0z" fill="none"></path>
                     <path fill="currentColor" d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z"></path>
                   </svg>
                 </div>
                 <p><strong>Formato:</strong> 10 questões objetivas (A a D) sobre conceitos-chave do DDD</p>
               </div>
-              
+
               <div className="rule-item">
                 <div className="rule-icon">
-                  <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <svg height="24" width="24" viewBox="0 0 24 24">
                     <path d="M0 0h24v24H0z" fill="none"></path>
                     <path fill="currentColor" d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z"></path>
                   </svg>
                 </div>
                 <p><strong>Aprovação:</strong> Acerto mínimo de 70% para emissão do certificado</p>
               </div>
-              
+
               <div className="rule-item">
                 <div className="rule-icon">
-                  <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <svg height="24" width="24" viewBox="0 0 24 24">
                     <path d="M0 0h24v24H0z" fill="none"></path>
                     <path fill="currentColor" d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z"></path>
                   </svg>
@@ -62,7 +62,7 @@ const Avaliacao = () => {
                 <p><strong>Navegação:</strong> Use os botões "Anterior" e "Próxima" para percorrer as questões</p>
               </div>
             </div>
-            
+
             <div className="action-button">
               <button 
                 onClick={iniciarAvaliacao}

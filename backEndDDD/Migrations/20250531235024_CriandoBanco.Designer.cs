@@ -11,8 +11,8 @@ using backEndDDD.Data;
 namespace backEndDDD.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250409235431_Casdastros3")]
-    partial class Casdastros3
+    [Migration("20250531235024_CriandoBanco")]
+    partial class CriandoBanco
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

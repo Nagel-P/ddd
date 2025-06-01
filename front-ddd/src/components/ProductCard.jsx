@@ -64,7 +64,7 @@ const ProductCard = () => {
         <div className="inner">
           {getUserStatus() !== 'paid' && (
             <span className="pricing">
-              <span>R$ 120</span>
+              <span>R$ 50</span>
             </span>
           )}
           

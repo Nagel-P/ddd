@@ -39,7 +39,7 @@ const Download = () => {
           <h1>Obrigado pela compra!</h1>
           <p>Seu arquivo está pronto para download.</p>
           <a 
-            href={DDDescomplicaPDF} 
+            href= '/Certificados/DDDescomplica.pdf'
             download="DDDescomplica.pdf" 
             className="download-link"
           >

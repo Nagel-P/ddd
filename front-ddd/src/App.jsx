@@ -8,6 +8,7 @@ import Cadastro from "./pages/Cadastro";
 import ProtectedRoute from "./ProtectedRoute";
 import Avaliacao from "./pages/Avaliacao";
 import Questoes from "./pages/Questoes";
+import Resultado from "./pages/Resultado";
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
         <Route path="/cadastro" element={<Cadastro />} />
         <Route path="/avaliacao" element={<Avaliacao />} />
         <Route path="/questoes" element={<Questoes />} />
+        <Route path="/resultado" element={<Resultado />} />
 
         <Route
           path="/pagamento"
