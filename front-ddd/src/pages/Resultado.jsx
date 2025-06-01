@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import "../style/Resultado.css";
 
 const Resultado = () => {
   const navigate = useNavigate();
@@ -27,20 +28,22 @@ const Resultado = () => {
       <main className="resultado-main">
         <div className="resultado-card">
           <h1>Resultado da Prova</h1>
-          <p><strong>Acertos:</strong> {acertos} de 10</p>
-          <p><strong>Nota:</strong> {nota.toFixed(2)}%</p>
-          <p><strong>Status:</strong> {aprovado ? "Aprovado 🎉" : "Reprovado ❌"}</p>
 
-          <div className="resultado-buttons">
-            {aprovado ? (
-              <button onClick={emitirCertificado} className="resultado-button">
-                Emitir Certificado
+          <div className="resultado-content">
+            <p><strong>Acertos:</strong> {acertos} de 10</p>
+            <p><strong>Nota:</strong> {nota.toFixed(2)}%</p>
+            <p><strong>Status:</strong> {aprovado ? "Aprovado 🎉" : "Reprovado ❌"}</p>
+
+            <div className="resultado-buttons">
+              {aprovado && (
+                <button onClick={emitirCertificado} className="resultado-button emit">
+                  Emitir Certificado
+                </button>
+              )}
+              <button onClick={tentarNovamente} className="resultado-button retry">
+                Tentar Novamente
               </button>
-            ) : null}
-
-            <button onClick={tentarNovamente} className="resultado-button">
-              Tentar Novamente
-            </button>
+            </div>
           </div>
         </div>
       </main>
